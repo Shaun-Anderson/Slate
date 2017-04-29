@@ -58,6 +58,7 @@ class image: UIImageView {
                 self.transform = CGAffineTransform(scaleX: 1, y: 1)
                 self.layer.shadowOpacity = 0
                 //Update()
+                
             }
             else
             {
