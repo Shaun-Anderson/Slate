@@ -30,10 +30,14 @@
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Use gallery to add photo to your slate</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Use camera to add a photo to your slate</string>
 </dict>
 </plist>

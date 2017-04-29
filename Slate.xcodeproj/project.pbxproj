@@ -8,13 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		CA9296651EB4BF7700159FA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296641EB4BF7700159FA0 /* AppDelegate.swift */; };
-		CA9296671EB4BF7700159FA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296661EB4BF7700159FA0 /* ViewController.swift */; };
+		CA9296671EB4BF7700159FA0 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296661EB4BF7700159FA0 /* MenuController.swift */; };
 		CA92966A1EB4BF7700159FA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA9296681EB4BF7700159FA0 /* Main.storyboard */; };
-		CA92966D1EB4BF7700159FA0 /* Slate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA92966B1EB4BF7700159FA0 /* Slate.xcdatamodeld */; };
 		CA92966F1EB4BF7700159FA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA92966E1EB4BF7700159FA0 /* Assets.xcassets */; };
 		CA9296721EB4BF7700159FA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA9296701EB4BF7700159FA0 /* LaunchScreen.storyboard */; };
 		CA92967D1EB4BF7700159FA0 /* SlateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA92967C1EB4BF7700159FA0 /* SlateTests.swift */; };
 		CA9296881EB4BF7700159FA0 /* SlateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296871EB4BF7700159FA0 /* SlateUITests.swift */; };
+		CA9296991EB4C10E00159FA0 /* CGExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296981EB4C10E00159FA0 /* CGExtension.swift */; };
+		CA92969B1EB4C12800159FA0 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA92969A1EB4C12800159FA0 /* UIColorExtensions.swift */; };
+		CA92969D1EB4C14500159FA0 /* image.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA92969C1EB4C14500159FA0 /* image.swift */; };
+		CA9296A21EB4C22400159FA0 /* note.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296A11EB4C22400159FA0 /* note.swift */; };
+		CA9296A41EB4C25600159FA0 /* drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296A31EB4C25600159FA0 /* drawing.swift */; };
+		CA9296A61EB4C2D900159FA0 /* Edit_imageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296A51EB4C2D900159FA0 /* Edit_imageView.swift */; };
+		CA9296A81EB4C2F000159FA0 /* Edit_noteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296A71EB4C2F000159FA0 /* Edit_noteView.swift */; };
+		CA9296AA1EB4C32A00159FA0 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296A91EB4C32A00159FA0 /* MainController.swift */; };
+		CA9296AC1EB4C35C00159FA0 /* boardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296AB1EB4C35C00159FA0 /* boardView.swift */; };
+		CA9296AE1EB4C37500159FA0 /* controlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296AD1EB4C37500159FA0 /* controlView.swift */; };
+		CA9296B41EB4CB2A00159FA0 /* Slate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA9296B21EB4CB2A00159FA0 /* Slate.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,9 +47,8 @@
 /* Begin PBXFileReference section */
 		CA9296611EB4BF7700159FA0 /* Slate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA9296641EB4BF7700159FA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CA9296661EB4BF7700159FA0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CA9296661EB4BF7700159FA0 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		CA9296691EB4BF7700159FA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CA92966C1EB4BF7700159FA0 /* Slate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Slate.xcdatamodel; sourceTree = "<group>"; };
 		CA92966E1EB4BF7700159FA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA9296711EB4BF7700159FA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA9296731EB4BF7700159FA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +58,17 @@
 		CA9296831EB4BF7700159FA0 /* SlateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA9296871EB4BF7700159FA0 /* SlateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlateUITests.swift; sourceTree = "<group>"; };
 		CA9296891EB4BF7700159FA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA9296981EB4C10E00159FA0 /* CGExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGExtension.swift; sourceTree = "<group>"; };
+		CA92969A1EB4C12800159FA0 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		CA92969C1EB4C14500159FA0 /* image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = image.swift; sourceTree = "<group>"; };
+		CA9296A11EB4C22400159FA0 /* note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = note.swift; sourceTree = "<group>"; };
+		CA9296A31EB4C25600159FA0 /* drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = drawing.swift; sourceTree = "<group>"; };
+		CA9296A51EB4C2D900159FA0 /* Edit_imageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edit_imageView.swift; sourceTree = "<group>"; };
+		CA9296A71EB4C2F000159FA0 /* Edit_noteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edit_noteView.swift; sourceTree = "<group>"; };
+		CA9296A91EB4C32A00159FA0 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		CA9296AB1EB4C35C00159FA0 /* boardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = boardView.swift; sourceTree = "<group>"; };
+		CA9296AD1EB4C37500159FA0 /* controlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = controlView.swift; sourceTree = "<group>"; };
+		CA9296B31EB4CB2A00159FA0 /* LifeBoard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LifeBoard.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +119,19 @@
 		CA9296631EB4BF7700159FA0 /* Slate */ = {
 			isa = PBXGroup;
 			children = (
+				CA9296AD1EB4C37500159FA0 /* controlView.swift */,
+				CA9296AB1EB4C35C00159FA0 /* boardView.swift */,
+				CA9296A91EB4C32A00159FA0 /* MainController.swift */,
 				CA9296641EB4BF7700159FA0 /* AppDelegate.swift */,
-				CA9296661EB4BF7700159FA0 /* ViewController.swift */,
+				CA9296661EB4BF7700159FA0 /* MenuController.swift */,
 				CA9296681EB4BF7700159FA0 /* Main.storyboard */,
 				CA92966E1EB4BF7700159FA0 /* Assets.xcassets */,
 				CA9296701EB4BF7700159FA0 /* LaunchScreen.storyboard */,
 				CA9296731EB4BF7700159FA0 /* Info.plist */,
-				CA92966B1EB4BF7700159FA0 /* Slate.xcdatamodeld */,
+				CA9296B21EB4CB2A00159FA0 /* Slate.xcdatamodeld */,
+				CA9296971EB4BFAF00159FA0 /* Objects */,
+				CA9296961EB4BFA500159FA0 /* EditViews */,
+				CA9296951EB4BF9B00159FA0 /* Extensions */,
 			);
 			path = Slate;
 			sourceTree = "<group>";
@@ -126,6 +152,34 @@
 				CA9296891EB4BF7700159FA0 /* Info.plist */,
 			);
 			path = SlateUITests;
+			sourceTree = "<group>";
+		};
+		CA9296951EB4BF9B00159FA0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CA92969A1EB4C12800159FA0 /* UIColorExtensions.swift */,
+				CA9296981EB4C10E00159FA0 /* CGExtension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		CA9296961EB4BFA500159FA0 /* EditViews */ = {
+			isa = PBXGroup;
+			children = (
+				CA9296A71EB4C2F000159FA0 /* Edit_noteView.swift */,
+				CA9296A51EB4C2D900159FA0 /* Edit_imageView.swift */,
+			);
+			name = EditViews;
+			sourceTree = "<group>";
+		};
+		CA9296971EB4BFAF00159FA0 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				CA9296A31EB4C25600159FA0 /* drawing.swift */,
+				CA9296A11EB4C22400159FA0 /* note.swift */,
+				CA92969C1EB4C14500159FA0 /* image.swift */,
+			);
+			name = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,9 +316,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA92966D1EB4BF7700159FA0 /* Slate.xcdatamodeld in Sources */,
-				CA9296671EB4BF7700159FA0 /* ViewController.swift in Sources */,
+				CA92969D1EB4C14500159FA0 /* image.swift in Sources */,
+				CA9296A21EB4C22400159FA0 /* note.swift in Sources */,
+				CA9296A81EB4C2F000159FA0 /* Edit_noteView.swift in Sources */,
+				CA9296AE1EB4C37500159FA0 /* controlView.swift in Sources */,
+				CA9296A61EB4C2D900159FA0 /* Edit_imageView.swift in Sources */,
+				CA9296AA1EB4C32A00159FA0 /* MainController.swift in Sources */,
+				CA9296A41EB4C25600159FA0 /* drawing.swift in Sources */,
+				CA9296671EB4BF7700159FA0 /* MenuController.swift in Sources */,
 				CA9296651EB4BF7700159FA0 /* AppDelegate.swift in Sources */,
+				CA9296991EB4C10E00159FA0 /* CGExtension.swift in Sources */,
+				CA9296AC1EB4C35C00159FA0 /* boardView.swift in Sources */,
+				CA92969B1EB4C12800159FA0 /* UIColorExtensions.swift in Sources */,
+				CA9296B41EB4CB2A00159FA0 /* Slate.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,12 +593,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		CA92966B1EB4BF7700159FA0 /* Slate.xcdatamodeld */ = {
+		CA9296B21EB4CB2A00159FA0 /* Slate.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				CA92966C1EB4BF7700159FA0 /* Slate.xcdatamodel */,
+				CA9296B31EB4CB2A00159FA0 /* LifeBoard.xcdatamodel */,
 			);
-			currentVersion = CA92966C1EB4BF7700159FA0 /* Slate.xcdatamodel */;
+			currentVersion = CA9296B31EB4CB2A00159FA0 /* LifeBoard.xcdatamodel */;
 			path = Slate.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
