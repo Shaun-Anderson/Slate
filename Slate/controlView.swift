@@ -30,6 +30,13 @@ class controlView: UIView{
         imageButton.setTitle("Image", for: .normal)
         imageButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
         self.addSubview(imageButton)
+        
+        let drawButton = UIButton(frame: CGRect(0,208,64,64))
+        drawButton.backgroundColor = UIColor.red
+        drawButton.addTarget(vc, action: #selector(vc.AddDrawing), for: .touchUpInside)
+        drawButton.setTitle("Drawing", for: .normal)
+        drawButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
+        self.addSubview(drawButton)
     }
     
     required init?(coder aDecoder: NSCoder) {

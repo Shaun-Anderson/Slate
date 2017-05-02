@@ -78,11 +78,6 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
             print("Font Names = [\(names)]")
         }
         */
-        
-        let hi = drawing(frame: CGRect(self.view.frame.midX,500,200,200))
-        drawList.append(hi)
-        hi.backgroundColor = UIColor.white
-        board.addSubview(hi)
     }
     
     func OpenMenu()
@@ -244,6 +239,17 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         newImage = newView
         imageList.append(newView)
         OpenImagePicker(delegate: self)
+    }
+    
+    func AddDrawing()
+    {
+        let newView = drawing(frame: CGRect(450,300,200,150))
+        newView.vc = self
+        newView.layer.zPosition = 0
+        drawList.append(newView)
+        drawList.append(newView)
+        newView.backgroundColor = UIColor.white
+        board.addSubview(newView)
     }
     
     func OpenImagePicker(delegate: UIImagePickerControllerDelegate & UINavigationControllerDelegate)

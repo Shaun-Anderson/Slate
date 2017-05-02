@@ -101,7 +101,7 @@ class drawing: UIImageView {
         {
             vc.selectedImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
         }
-        self.center = CGPoint((self.superview?.center.x)!, (self.superview?.center.y)!)
+        self.center = CGPoint((vc.board.frame.midX), (vc.board.frame.midY))
         self.transform = CGAffineTransform(scaleX: 2, y: 2)
         scale = 2
         active = true
