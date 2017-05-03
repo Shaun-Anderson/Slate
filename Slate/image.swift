@@ -9,6 +9,7 @@
 //  Image with gesture recongnizers and functions to handle.
 
 import UIKit
+import CoreData
 
 class image: UIImageView {
     
@@ -22,7 +23,8 @@ class image: UIImageView {
     var width = CGFloat()
     var height = CGFloat()
     var boarderWidth : Int = 0
-    
+    var thisID: Int64 = 0
+
     //Mark: Initiation
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -35,6 +37,7 @@ class image: UIImageView {
         self.isUserInteractionEnabled = true
         
     }
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -57,7 +60,7 @@ class image: UIImageView {
             {
                 self.transform = CGAffineTransform(scaleX: 1, y: 1)
                 self.layer.shadowOpacity = 0
-                //Update()
+                Update(imgData: image!)
                 
             }
             else
@@ -67,9 +70,32 @@ class image: UIImageView {
         }
     }
     
-    func Update()
+    func Update(imgData: UIImage)
     {
+        guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let managedContext = AppDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Image")
+        fetchRequest.predicate = NSPredicate(format: "id == %i", (self.thisID))
         
+        do{
+            let data = try managedContext.fetch(fetchRequest)
+            print(data.count)
+            if(data.count == 1)
+            {
+                let managedObject = data[0]
+                print(data[0])
+                
+                let newLocation: CGPoint = CGPoint(self.center.x - (self.frame.width/2),self.center.y - (self.frame.height/2))
+                managedObject.setValue(NSStringFromCGPoint(newLocation), forKey: "position")
+                
+                managedObject.setValue(imgData, forKey: "imageData")
+            }
+            try managedContext.save()
+        } catch _ as NSError
+        {
+            print("ISSUE LOADING")
+        }
+        print("UPDATE: IMAGE\(self.thisID) at pos \(self.center)")
     }
     
     func Remove()

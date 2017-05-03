@@ -31,7 +31,7 @@ class controlView: UIView{
         imageButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
         self.addSubview(imageButton)
         
-        let drawButton = UIButton(frame: CGRect(0,208,64,64))
+        let drawButton = UIButton(frame: CGRect(0,282,64,64))
         drawButton.backgroundColor = UIColor.red
         drawButton.addTarget(vc, action: #selector(vc.AddDrawing), for: .touchUpInside)
         drawButton.setTitle("Drawing", for: .normal)

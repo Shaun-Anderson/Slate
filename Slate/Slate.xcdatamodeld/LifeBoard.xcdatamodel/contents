@@ -5,11 +5,15 @@
         <attribute name="backgroundImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numImages" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="numNotes" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
+    <entity name="Drawing" representedClassName="Drawing" syncable="YES" codeGenerationType="class"/>
     <entity name="Image" representedClassName="Image" syncable="YES" codeGenerationType="class">
         <attribute name="height" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="position" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="width" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="Note" representedClassName="Note" syncable="YES" codeGenerationType="class">
@@ -21,8 +25,9 @@
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Board" positionX="-63" positionY="27" width="128" height="120"/>
-        <element name="Image" positionX="-63" positionY="45" width="128" height="90"/>
+        <element name="Board" positionX="-63" positionY="27" width="128" height="135"/>
+        <element name="Image" positionX="-63" positionY="45" width="128" height="120"/>
         <element name="Note" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Drawing" positionX="-63" positionY="45" width="128" height="45"/>
     </elements>
 </model>

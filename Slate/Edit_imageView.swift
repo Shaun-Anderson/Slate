@@ -71,6 +71,7 @@ class Edit_imageView: UIView, UIImagePickerControllerDelegate, UINavigationContr
         {
             newImage = foundImage
             thisImageView.image = newImage
+            vc.SaveImage(image: foundImage, position: NSStringFromCGPoint(thisImageView.center),width: 200, height: 150)
             self.removeFromSuperview()
         }
         else

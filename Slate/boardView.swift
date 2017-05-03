@@ -134,19 +134,6 @@ class boardView: UIView, UIGestureRecognizerDelegate{
         print("BOARD: Cancel Touch")
     }
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if(touch.view?.isDescendant(of: self))!
-        {
-            print("HIT DECENDENT")
-            return true
-        }
-        else
-        {
-            print("HIT SELF")
-            return false
-        }
-    }
-    
     func detectTap(_ sender: UITapGestureRecognizer? = nil)
     {
         print("BOARD: Tap")

@@ -573,6 +573,7 @@
 				CA92968E1EB4BF7700159FA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CA92968F1EB4BF7700159FA0 /* Build configuration list for PBXNativeTarget "SlateTests" */ = {
 			isa = XCConfigurationList;
@@ -581,6 +582,7 @@
 				CA9296911EB4BF7700159FA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CA9296921EB4BF7700159FA0 /* Build configuration list for PBXNativeTarget "SlateUITests" */ = {
 			isa = XCConfigurationList;
@@ -589,6 +591,7 @@
 				CA9296941EB4BF7700159FA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

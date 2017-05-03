@@ -47,8 +47,6 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         controlview = newControl
         self.view.addSubview(controlview)
         controlview.layer.zPosition = CGFloat.greatestFiniteMagnitude
-        LoadNote()
- 
         
         //Create Add Menu Button
         let addMenuButton = UIButton(frame: CGRect(self.view.frame.width - 100,50,64,64))
@@ -78,6 +76,9 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
             print("Font Names = [\(names)]")
         }
         */
+        
+        LoadNote()
+        LoadImage()
     }
     
     func OpenMenu()
@@ -135,9 +136,20 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    func SaveImage(data: String, width: Double, height: Double)
+    func SaveImage(image: UIImage, position: String, width: Double, height: Double)
     {
+        print("SAVING: IMAGE")
+        guard let AppDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
         
+        let managedContext = AppDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Image", in: managedContext)
+        let note = NSManagedObject(entity: entity!, insertInto: managedContext)
+        
+        let imageData = UIImagePNGRepresentation(image);
+        note.setValue(position, forKey: "position")
+        note.setValue(imageData, forKey: "imageData")
+        note.setValue(imageList.count, forKey: "id")
+        do{ try managedContext.save() } catch _ as NSError { print("Error saving") }
     }
     
     
@@ -190,6 +202,43 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    func LoadImage()
+    {
+        guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let managedContext = AppDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Image")
+        
+        do{
+            let data = try managedContext.fetch(fetchRequest)
+            print(data.count)
+            if(data.count > 0)
+            {
+                for datas in data
+                {
+                    //Get data
+                    let location = CGPointFromString(datas.value(forKey: "position") as! String)
+                    
+                    //Create Notes From Data
+                    let newView = image(frame: CGRect(location.x, location.y,200,150))
+                    newView.vc = self
+                    let img : UIImage = UIImage(data: datas.value(forKey: "imageData") as! Data)!
+                    newView.image = img
+                    newView.thisID = datas.value(forKey: "id") as! Int64
+                    newView.layer.zPosition = 0
+                    newView.layer.borderWidth = 2
+                    newView.layer.borderColor = UIColor.white.cgColor
+                    
+                    board.addSubview(newView)
+                    imageList.append(newView)
+                    print("LOADED: IMAGE:\(newView.thisID) at pos: \(location)")
+                }
+            }
+        } catch _ as NSError
+        {
+            print("ISSUE LOADING")
+        }
+    }
+    
     //Grabs numNotes from board data and then adds its as the notes id to ensure its always unique and makes it easy to grab the specifc note from Core Data.
     func AddNote()
     {
@@ -231,14 +280,36 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func AddImage()
     {
-        let newView = image(frame: CGRect(450,300,200,150))
-        newView.vc = self
-        newView.layer.zPosition = 0
-        newView.layer.borderWidth = 2
-        newView.layer.borderColor = UIColor.white.cgColor
-        newImage = newView
-        imageList.append(newView)
-        OpenImagePicker(delegate: self)
+        
+        guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let managedContext = AppDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Board")
+        fetchRequest.predicate = NSPredicate(format: "name == %@", currentBoardName)
+        //ADD PREDICATION FOR OTHER BOARDS
+        do{
+            let data = try managedContext.fetch(fetchRequest)
+            if(data.count > 0)
+            {
+                //Get note amount
+                let noteID = data[0].value(forKey: "numImages") as! Int
+                data[0].setValue((noteID) + 1, forKey: "numImages")
+                
+                let newView = image(frame: CGRect(450,300,200,150))
+                
+                newView.vc = self
+                newView.layer.zPosition = 0
+                newView.layer.borderWidth = 2
+                newView.layer.borderColor = UIColor.white.cgColor
+                newImage = newView
+                imageList.append(newView)
+                OpenImagePicker(delegate: self)
+                
+                print("Created Image")
+            }
+        } catch _ as NSError
+        {
+            print("ISSUE LOADING")
+        }
     }
     
     func AddDrawing()
@@ -279,7 +350,7 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = AppDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Note")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Image")
         
         do{
             let data = try managedContext.fetch(fetchRequest)
@@ -329,7 +400,7 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
             selectedImage = foundImage
             newImage.image = selectedImage
             board.addSubview(newImage)
-            
+            SaveImage(image: foundImage, position: NSStringFromCGPoint(newImage.center),width: 200, height: 150)
         }
         else
         {
