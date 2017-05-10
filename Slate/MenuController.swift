@@ -24,6 +24,43 @@ class MenuController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.boardCollection.dataSource = self;
     }
     
+    //CAN BE USED TO ENSURE AN ITNITAL BOARD
+    func CreateBoard(name: String)
+    {
+        guard let AppDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
+        let managedContext = AppDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Board")
+        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        
+        do{
+            let data = try managedContext.fetch(fetchRequest)
+            print(data.count)
+            if(data.count == 0)
+            {
+                let entity = NSEntityDescription.entity(forEntityName: "Board", in: managedContext)
+                let slate = NSManagedObject(entity: entity!, insertInto: managedContext)
+                
+                slate.setValue(name, forKey: "name")
+                slate.setValue(0, forKey: "numNotes")
+                
+                do{
+                    try managedContext.save()
+                } catch _ as NSError
+                {
+                    print("Error saving")
+                }
+                print("CREATED SLATE NAMED: \(name)")
+            }
+            else
+            {
+                print("Slate already exists")
+            }
+        } catch _ as NSError
+        {
+            print("ISSUE LOADING")
+        }
+    }
+    
     func ReloadBoards()
     {
         guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
