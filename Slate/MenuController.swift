@@ -89,10 +89,18 @@ class MenuController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Dispose of any resources that can be recreated.
     }
     
+    
+    //SEGUE FUNCTIONS
     func MoveToMain(boardName: String)
     {
         let newVC = self.storyboard?.instantiateViewController(withIdentifier: "main") as! MainController
         newVC.currentBoardName = boardName
+        present(newVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func MoveToNew()
+    {
+        let newVC = self.storyboard?.instantiateViewController(withIdentifier: "main") as! MainController
         present(newVC, animated: true, completion: nil)
     }
     
@@ -111,6 +119,6 @@ class MenuController: UIViewController, UICollectionViewDelegate, UICollectionVi
         MoveToMain(boardName: cell.boardNameLabel.text!)
     }
 
-
+   
 }
 

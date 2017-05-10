@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CA4896CF1EC2F67B008B341F /* BoardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4896CE1EC2F67B008B341F /* BoardCollectionViewCell.swift */; };
+		CA4896D11EC3132B008B341F /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4896D01EC3132B008B341F /* AddController.swift */; };
 		CA9296651EB4BF7700159FA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296641EB4BF7700159FA0 /* AppDelegate.swift */; };
 		CA9296671EB4BF7700159FA0 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296661EB4BF7700159FA0 /* MenuController.swift */; };
 		CA92966A1EB4BF7700159FA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA9296681EB4BF7700159FA0 /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		CA4896CE1EC2F67B008B341F /* BoardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardCollectionViewCell.swift; sourceTree = "<group>"; };
+		CA4896D01EC3132B008B341F /* AddController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
 		CA9296611EB4BF7700159FA0 /* Slate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA9296641EB4BF7700159FA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA9296661EB4BF7700159FA0 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
@@ -121,16 +123,17 @@
 		CA9296631EB4BF7700159FA0 /* Slate */ = {
 			isa = PBXGroup;
 			children = (
-				CA9296AD1EB4C37500159FA0 /* controlView.swift */,
-				CA9296AB1EB4C35C00159FA0 /* boardView.swift */,
-				CA9296A91EB4C32A00159FA0 /* MainController.swift */,
-				CA9296641EB4BF7700159FA0 /* AppDelegate.swift */,
-				CA9296661EB4BF7700159FA0 /* MenuController.swift */,
-				CA9296681EB4BF7700159FA0 /* Main.storyboard */,
-				CA92966E1EB4BF7700159FA0 /* Assets.xcassets */,
-				CA9296701EB4BF7700159FA0 /* LaunchScreen.storyboard */,
 				CA9296731EB4BF7700159FA0 /* Info.plist */,
 				CA9296B21EB4CB2A00159FA0 /* Slate.xcdatamodeld */,
+				CA92966E1EB4BF7700159FA0 /* Assets.xcassets */,
+				CA9296681EB4BF7700159FA0 /* Main.storyboard */,
+				CA9296701EB4BF7700159FA0 /* LaunchScreen.storyboard */,
+				CA9296641EB4BF7700159FA0 /* AppDelegate.swift */,
+				CA9296AD1EB4C37500159FA0 /* controlView.swift */,
+				CA9296AB1EB4C35C00159FA0 /* boardView.swift */,
+				CA4896D01EC3132B008B341F /* AddController.swift */,
+				CA9296A91EB4C32A00159FA0 /* MainController.swift */,
+				CA9296661EB4BF7700159FA0 /* MenuController.swift */,
 				CA4896CE1EC2F67B008B341F /* BoardCollectionViewCell.swift */,
 				CA9296971EB4BFAF00159FA0 /* Objects */,
 				CA9296961EB4BFA500159FA0 /* EditViews */,
@@ -325,6 +328,7 @@
 				CA9296AE1EB4C37500159FA0 /* controlView.swift in Sources */,
 				CA9296A61EB4C2D900159FA0 /* Edit_imageView.swift in Sources */,
 				CA9296AA1EB4C32A00159FA0 /* MainController.swift in Sources */,
+				CA4896D11EC3132B008B341F /* AddController.swift in Sources */,
 				CA9296A41EB4C25600159FA0 /* drawing.swift in Sources */,
 				CA4896CF1EC2F67B008B341F /* BoardCollectionViewCell.swift in Sources */,
 				CA9296671EB4BF7700159FA0 /* MenuController.swift in Sources */,

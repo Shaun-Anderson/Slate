@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Add Controller-->
         <scene sceneID="OUS-Pr-Z0r">
             <objects>
-                <viewController id="GbE-9v-ihm" sceneMemberID="viewController">
+                <viewController id="GbE-9v-ihm" customClass="AddController" customModule="Slate" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3PC-QJ-6iy"/>
                         <viewControllerLayoutGuide type="bottom" id="kXe-vt-8Ns"/>
@@ -35,17 +35,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rau-RP-dUO">
+                                <rect key="frame" x="0.0" y="821" width="768" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="ADD"/>
+                                <connections>
+                                    <action selector="CheckSave" destination="GbE-9v-ihm" eventType="touchUpInside" id="ZgY-xW-JvJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="boardNameTextfield" destination="IAR-9m-RlN" id="JXA-ja-zWB"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="AddToMenu" id="Qh1-ND-MjC"/>
                         <segue destination="ola-UU-NtI" kind="show" identifier="AddToMain" id="Ux6-X8-qBe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pbj-6M-Ja8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="545.3125" y="813.8671875"/>
+            <point key="canvasLocation" x="787.5" y="-820.3125"/>
         </scene>
         <!--Menu Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -97,6 +106,9 @@
                                 <rect key="frame" x="640" y="28" width="95" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="MoveToNew" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rwr-GO-rkV"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SLATES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcp-pR-d2q">
                                 <rect key="frame" x="33" y="28" width="599" height="95"/>
@@ -111,11 +123,12 @@
                     <connections>
                         <outlet property="boardCollection" destination="JMq-QZ-iHw" id="aae-nS-dRC"/>
                         <segue destination="ola-UU-NtI" kind="show" identifier="moveToMain" id="fML-AW-qnl"/>
+                        <segue destination="GbE-9v-ihm" kind="show" id="Eyw-uj-3pq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="115.625" y="102.5390625"/>
+            <point key="canvasLocation" x="489" y="103"/>
         </scene>
         <!--Main Controller-->
         <scene sceneID="scE-rY-hXA">
@@ -142,15 +155,17 @@
                     </view>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="moveToMenu" id="lE9-gZ-EZH"/>
+                        <segue destination="GbE-9v-ihm" kind="show" id="fvg-II-Uq0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9wE-ed-xBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="905" y="103"/>
+            <point key="canvasLocation" x="1198" y="103"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ux6-X8-qBe"/>
+        <segue reference="Eyw-uj-3pq"/>
         <segue reference="Qh1-ND-MjC"/>
+        <segue reference="fML-AW-qnl"/>
     </inferredMetricsTieBreakers>
 </document>
