@@ -69,7 +69,7 @@ class Edit_noteView: UIView, UIImagePickerControllerDelegate, UINavigationContro
     {
         let maxLength = 4
         let t = textField.text
-        //textField.text = t!.safe(length: maxLength)
+        textField.text = t!.safelyLimitedTo(length: maxLength)
         return true
     }
 }

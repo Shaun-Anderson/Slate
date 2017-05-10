@@ -37,7 +37,7 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         board = newboard
         board.center = self.view.center
         self.view.addSubview(board)
-        CreateBoard(name: "My Slate")
+        CreateBoard(name: currentBoardName)
         
         //Create Add Menu
         let newControl = controlView(frame: CGRect(self.view.frame.width, 0,64,1000))
