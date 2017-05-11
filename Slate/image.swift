@@ -60,7 +60,8 @@ class image: UIImageView {
             {
                 self.transform = CGAffineTransform(scaleX: 1, y: 1)
                 self.layer.shadowOpacity = 0
-                Update(imgData: image!)
+                let imageData = UIImagePNGRepresentation(image!);
+                Update(imgData: imageData!)
                 
             }
             else
@@ -70,7 +71,7 @@ class image: UIImageView {
         }
     }
     
-    func Update(imgData: UIImage)
+    func Update(imgData: Data)
     {
         guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = AppDelegate.persistentContainer.viewContext
@@ -83,8 +84,6 @@ class image: UIImageView {
             if(data.count == 1)
             {
                 let managedObject = data[0]
-                print(data[0])
-                
                 let newLocation: CGPoint = CGPoint(self.center.x - (self.frame.width/2),self.center.y - (self.frame.height/2))
                 managedObject.setValue(NSStringFromCGPoint(newLocation), forKey: "position")
                 
@@ -95,7 +94,7 @@ class image: UIImageView {
         {
             print("ISSUE LOADING")
         }
-        print("UPDATE: IMAGE\(self.thisID) at pos \(self.center)")
+        print("UPDATE: IMAGE (\(self.thisID)) at pos \(self.center)")
     }
     
     func Remove()

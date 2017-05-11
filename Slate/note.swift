@@ -101,7 +101,6 @@ class note: UIView, UITextViewDelegate{
             if(data.count == 1)
             {
                 let managedObject = data[0]
-                print(data[0])
                 
                 let newLocation: CGPoint = CGPoint(self.center.x - (self.frame.width/2),self.center.y - (self.frame.height/2))
                 managedObject.setValue(NSStringFromCGPoint(newLocation), forKey: "position")

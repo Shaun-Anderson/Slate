@@ -19,6 +19,7 @@ class MenuController: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        CreateBoard(name: "My Slate")
         ReloadBoards()
         self.boardCollection.delegate = self
         self.boardCollection.dataSource = self;

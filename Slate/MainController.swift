@@ -58,8 +58,8 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         
         //Create Menu Button
-        let menuButton = UIButton(frame: CGRect(self.view.frame.width - 100,50,64,64))
-        menuButton.backgroundColor = UIColor.blue
+        let menuButton = UIButton(frame: CGRect(self.view.frame.minX + 50,50,64,64))
+        menuButton.backgroundColor = UIColor.black
         menuButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
         menuButton.addTarget(self, action: #selector(self.OpenMenu), for: .touchUpInside)
         self.view.addSubview(menuButton)
@@ -93,6 +93,8 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
             UIView.animate(withDuration: 0.25, animations: {self.controlview.frame = CGRect(self.view.frame.width,0,64,1000)}, completion: nil)
         }
     }
+    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -237,6 +239,8 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         {
             print("ISSUE LOADING")
         }
+        
+        print("Images loaded (\(imageList.count))")
     }
     
     //Grabs numNotes from board data and then adds its as the notes id to ensure its always unique and makes it easy to grab the specifc note from Core Data.

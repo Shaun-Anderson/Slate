@@ -78,9 +78,9 @@ class AddController: UIViewController {
         present(newVC, animated: true, completion: nil)
     }
     
-    func MoveToNew()
+    func MoveToMenu()
     {
-        let newVC = self.storyboard?.instantiateViewController(withIdentifier: "main") as! MainController
+        let newVC = self.storyboard?.instantiateViewController(withIdentifier: "AddToMenu") as! MainController
         present(newVC, animated: true, completion: nil)
     }
 

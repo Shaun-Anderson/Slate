@@ -12,7 +12,7 @@ class Edit_imageView: UIView, UIImagePickerControllerDelegate, UINavigationContr
     
     var vc = MainController()
     
-    var thisImageView = UIImageView()
+    var thisImageView  : image
     var newImage = UIImage()
     
     override init(frame: CGRect){
@@ -71,7 +71,8 @@ class Edit_imageView: UIView, UIImagePickerControllerDelegate, UINavigationContr
         {
             newImage = foundImage
             thisImageView.image = newImage
-            vc.SaveImage(image: foundImage, position: NSStringFromCGPoint(thisImageView.center),width: 200, height: 150)
+            let imageData = UIImagePNGRepresentation(foundImage);
+            thisImageView.Update(imgData: imageData!)
             self.removeFromSuperview()
         }
         else
