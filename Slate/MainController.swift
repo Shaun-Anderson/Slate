@@ -306,7 +306,7 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 newView.layer.borderColor = UIColor.white.cgColor
                 newImage = newView
                 imageList.append(newView)
-                OpenImagePicker(delegate: self)
+                OpenImagePicker(delegate: self, camera: false)
                 
                 print("Created Image")
             }
@@ -327,26 +327,20 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         board.addSubview(newView)
     }
     
-    func OpenImagePicker(delegate: UIImagePickerControllerDelegate & UINavigationControllerDelegate)
+    func OpenImagePicker(delegate: UIImagePickerControllerDelegate & UINavigationControllerDelegate, camera: Bool)
     {
         let image = UIImagePickerController()
         image.modalPresentationStyle = .overCurrentContext
         image.delegate = delegate
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        
+        if camera == true {
+            image.sourceType = UIImagePickerControllerSourceType.camera
+        }
+        else {
+            image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        }
         image.allowsEditing = false
         self.present(image, animated: true, completion: nil)
-    }
-    
-    func ImageSelected()
-    {
-        
-    }
- 
-    
-    public func NextView()
-    {
-        print("NEXT SCENE")
-        performSegue(withIdentifier: "editSeg", sender: nil)
     }
     
     //Clears the data from history

@@ -59,7 +59,7 @@ class note: UIView, UITextViewDelegate{
         textField.isUserInteractionEnabled = false;
         let translation = sender?.translation(in: self.superview)
         self.center = CGPoint(lastLocation.x + (translation?.x)!, lastLocation.y + (translation?.y)!)
-        self.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.5
         self.layer.shadowOffset = CGSize(0,10.0)
@@ -84,7 +84,7 @@ class note: UIView, UITextViewDelegate{
     {
         print("TAP NOTE")
         textField.isUserInteractionEnabled = true;
-        self.transform = CGAffineTransform(scaleX: 2, y: 2)
+        self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         //vc.NextView()
     }
     

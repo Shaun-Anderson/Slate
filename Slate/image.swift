@@ -47,7 +47,7 @@ class image: UIImageView {
     {
         let translation = sender?.translation(in: self.superview)
         self.center = CGPoint(lastLocation.x + (translation?.x)!, lastLocation.y + (translation?.y)!)
-        self.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.5
         self.layer.shadowOffset = CGSize(0,10.0)
@@ -115,9 +115,9 @@ class image: UIImageView {
         {
             vc.selectedImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
         }
-        self.transform = CGAffineTransform(scaleX: 2, y: 2)
+        self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         
-        imageOptions = Edit_imageView(frame: CGRect(vc.view.frame.midX - 250 ,30,500,50))
+        imageOptions = Edit_imageView(frame: CGRect(vc.view.frame.midX - 250 ,30,500,60))
         imageOptions.vc = vc
         imageOptions.thisImageView = self
         imageOptions.backgroundColor = UIColor.gray

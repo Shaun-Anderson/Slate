@@ -47,7 +47,7 @@ class Edit_noteView: UIView, UIImagePickerControllerDelegate, UINavigationContro
     
     func ChangeImage()
     {
-        vc.OpenImagePicker(delegate: self)
+        vc.OpenImagePicker(delegate: self, camera: false)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])

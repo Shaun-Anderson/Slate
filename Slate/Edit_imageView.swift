@@ -12,36 +12,51 @@ class Edit_imageView: UIView, UIImagePickerControllerDelegate, UINavigationContr
     
     var vc = MainController()
     
-    var thisImageView  : image
+    var thisImageView : image?
     var newImage = UIImage()
     
     override init(frame: CGRect){
         super.init(frame: frame)
         self.isUserInteractionEnabled = true
         
-        let selectImageButton = UIButton(frame: CGRect(10,0,50,50))
-        selectImageButton.backgroundColor = UIColor.red
-        selectImageButton.addTarget(vc, action: #selector(self.ChangeImage), for: .touchUpInside)
-        selectImageButton.setTitle("Image", for: .normal)
-        selectImageButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
-        self.addSubview(selectImageButton)
+        let selectImageGalleryButton = UIButton(frame: CGRect(10,5,50,50))
+        selectImageGalleryButton.backgroundColor = UIColor.red
+        selectImageGalleryButton.addTarget(vc, action: #selector(self.ChangeImageGallery), for: .touchUpInside)
+        selectImageGalleryButton.layer.cornerRadius = 4.0
+        selectImageGalleryButton.setTitle("GALLERY", for: .normal)
+        selectImageGalleryButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
+        self.addSubview(selectImageGalleryButton)
         
-        let borderWidth = UITextField(frame: CGRect(70,0,40,50))
+        
+        //Create the image options (Gallery/Camera)
+        let selectImageCameraButton = UIButton(frame: CGRect(65,5,50,50))
+        selectImageCameraButton.backgroundColor = UIColor.red
+        selectImageCameraButton.addTarget(vc, action: #selector(self.ChangeImageCamera), for: .touchUpInside)
+        selectImageCameraButton.layer.cornerRadius = 4.0
+        selectImageCameraButton.setTitle("CAMERA", for: .normal)
+        selectImageCameraButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
+        self.addSubview(selectImageCameraButton)
+        
+        
+        let borderWidth = UITextField(frame: CGRect(125,5,50,50))
         borderWidth.placeholder = "WIDTH"
+        borderWidth.text = "\(thisImageView?.layer.borderWidth)"
         borderWidth.delegate = self
         borderWidth.keyboardType = UIKeyboardType.numberPad
         borderWidth.textAlignment = NSTextAlignment.center
         borderWidth.tag = 1
         borderWidth.backgroundColor = UIColor.red
         self.addSubview(borderWidth)
+ 
         
-        let selectBorderColor = UIButton(frame: CGRect(120,0,50,50))
+        /*let selectBorderColor = UIButton(frame: CGRect(120,0,50,50))
         selectBorderColor.backgroundColor = UIColor.white
         //selectBorderColor.addTarget(vc, action: #selector(self.ChangeImage), for: .touchUpInside)
         selectBorderColor.setTitleColor(UIColor.black, for: .normal)
         selectBorderColor.setTitle("Color", for: .normal)
         selectBorderColor.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
         self.addSubview(selectBorderColor)
+ */
         
         let selectWidth = UITextField(frame: CGRect(300,0,100,50))
         selectWidth.placeholder = "WIDTH"
@@ -55,14 +70,20 @@ class Edit_imageView: UIView, UIImagePickerControllerDelegate, UINavigationContr
         selectHeight.backgroundColor = UIColor.red
         self.addSubview(selectHeight)
     }
+
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func ChangeImage()
+    func ChangeImageGallery()
     {
-        vc.OpenImagePicker(delegate: self)
+        vc.OpenImagePicker(delegate: self, camera: false)
+    }
+    
+    func ChangeImageCamera()
+    {
+        vc.OpenImagePicker(delegate: self, camera: true)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
@@ -70,9 +91,9 @@ class Edit_imageView: UIView, UIImagePickerControllerDelegate, UINavigationContr
         if let foundImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         {
             newImage = foundImage
-            thisImageView.image = newImage
+            thisImageView?.image = newImage
             let imageData = UIImagePNGRepresentation(foundImage);
-            thisImageView.Update(imgData: imageData!)
+            thisImageView?.Update(imgData: imageData!)
             self.removeFromSuperview()
         }
         else
@@ -100,7 +121,7 @@ class Edit_imageView: UIView, UIImagePickerControllerDelegate, UINavigationContr
     func textFieldDidEndEditing(_ textField: UITextField) {
         if(textField.tag == 1)
         {
-            thisImageView.layer.borderWidth = CGFloat((textField.text?.numberValue())!)
+            thisImageView?.layer.borderWidth = CGFloat((textField.text?.numberValue())!)
             print("board")
         }
     }
