@@ -101,7 +101,7 @@ class MenuController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBAction func MoveToNew()
     {
-        let newVC = self.storyboard?.instantiateViewController(withIdentifier: "main") as! MainController
+        let newVC = self.storyboard?.instantiateViewController(withIdentifier: "add") as! AddController
         present(newVC, animated: true, completion: nil)
     }
     

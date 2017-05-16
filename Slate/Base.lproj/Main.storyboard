@@ -12,7 +12,7 @@
         <!--Add Controller-->
         <scene sceneID="OUS-Pr-Z0r">
             <objects>
-                <viewController id="GbE-9v-ihm" customClass="AddController" customModule="Slate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="add" id="GbE-9v-ihm" customClass="AddController" customModule="Slate" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3PC-QJ-6iy"/>
                         <viewControllerLayoutGuide type="bottom" id="kXe-vt-8Ns"/>
@@ -21,15 +21,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NAME:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NM4-38-Ayk">
-                                <rect key="frame" x="147" y="151" width="57" height="21"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IAR-9m-RlN">
-                                <rect key="frame" x="212" y="147" width="97" height="30"/>
+                                <rect key="frame" x="259" y="189" width="251" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -43,6 +36,13 @@
                                     <action selector="CheckSave" destination="GbE-9v-ihm" eventType="touchUpInside" id="ZgY-xW-JvJ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NAME:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NM4-38-Ayk">
+                                <rect key="frame" x="328" y="138" width="113" height="43"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -105,7 +105,8 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GlG-4j-la2">
                                 <rect key="frame" x="640" y="28" width="95" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <state key="normal" title="+"/>
                                 <connections>
                                     <action selector="MoveToNew" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rwr-GO-rkV"/>
                                 </connections>
@@ -123,12 +124,12 @@
                     <connections>
                         <outlet property="boardCollection" destination="JMq-QZ-iHw" id="aae-nS-dRC"/>
                         <segue destination="ola-UU-NtI" kind="show" identifier="moveToMain" id="fML-AW-qnl"/>
-                        <segue destination="GbE-9v-ihm" kind="show" id="Eyw-uj-3pq"/>
+                        <segue destination="GbE-9v-ihm" kind="show" identifier="moveToAdd" id="Eyw-uj-3pq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="489" y="103"/>
+            <point key="canvasLocation" x="335" y="119"/>
         </scene>
         <!--Main Controller-->
         <scene sceneID="scE-rY-hXA">
@@ -164,8 +165,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Eyw-uj-3pq"/>
         <segue reference="Qh1-ND-MjC"/>
-        <segue reference="fML-AW-qnl"/>
+        <segue reference="Eyw-uj-3pq"/>
+        <segue reference="Ux6-X8-qBe"/>
     </inferredMetricsTieBreakers>
 </document>

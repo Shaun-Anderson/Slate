@@ -59,6 +59,8 @@ class AddController: UIViewController {
                     print("Error saving")
                 }
                 print("CREATED SLATE NAMED: \(name)")
+                let newVC = self.storyboard?.instantiateViewController(withIdentifier: "main") as! MainController
+                present(newVC, animated: true, completion: nil)
             }
             else
             {
