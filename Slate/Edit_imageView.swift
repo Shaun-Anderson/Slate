@@ -21,7 +21,7 @@ class Edit_imageView: UIView, UIImagePickerControllerDelegate, UINavigationContr
         
         let selectImageGalleryButton = UIButton(frame: CGRect(10,5,50,50))
         selectImageGalleryButton.backgroundColor = UIColor.red
-        selectImageGalleryButton.addTarget(self, action: #selector(self.ChangeImage(_:)), for: .touchUpInside)
+        selectImageGalleryButton.addTarget(self, action: #selector(self.ChangeImageGallery), for: .touchUpInside)
         selectImageGalleryButton.layer.cornerRadius = 4.0
         selectImageGalleryButton.setTitle("GALLERY", for: .normal)
         selectImageGalleryButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
@@ -32,7 +32,7 @@ class Edit_imageView: UIView, UIImagePickerControllerDelegate, UINavigationContr
         let selectImageCameraButton = UIButton(frame: CGRect(65,5,50,50))
         selectImageGalleryButton.tag = 1
         selectImageCameraButton.backgroundColor = UIColor.red
-        selectImageCameraButton.addTarget(vc, action: #selector(self.ChangeImage(_:)), for: .touchUpInside)
+        selectImageCameraButton.addTarget(vc, action: #selector(self.ChangeImageCamera), for: .touchUpInside)
         selectImageCameraButton.layer.cornerRadius = 4.0
         selectImageCameraButton.setTitle("CAMERA", for: .normal)
         selectImageCameraButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
@@ -77,19 +77,15 @@ class Edit_imageView: UIView, UIImagePickerControllerDelegate, UINavigationContr
         fatalError("init(coder:) has not been implemented")
     }
     
-    func ChangeImage(_ sender: UIButton)
+    func ChangeImageGallery()
     {
-        if sender.tag == 0
-        {
-            vc.OpenImagePicker(delegate: self, camera: false)
-        }
-        else
-        {
-            vc.OpenImagePicker(delegate: self, camera: true)
-        }
-
+        vc.OpenImagePicker(delegate: self, camera: false)
     }
     
+    func ChangeImageCamera()
+    {
+        vc.OpenImagePicker(delegate: self, camera: true)
+    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
     {

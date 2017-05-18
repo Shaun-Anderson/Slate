@@ -91,13 +91,14 @@ class note: UIView, UITextViewDelegate{
     {
         guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = AppDelegate.persistentContainer.viewContext
+        
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Note")
         fetchRequest.predicate = NSPredicate(format: "boardName == %@", vc.currentBoardName)
         fetchRequest.predicate = NSPredicate(format: "id == %i", (self.thisID))
         
         do{
             let data = try managedContext.fetch(fetchRequest)
-            print(data.count)
+            print("\(data.count):  HIHIHIHII")
             if(data.count == 1)
             {
                 let managedObject = data[0]
@@ -111,7 +112,7 @@ class note: UIView, UITextViewDelegate{
         {
             print("ISSUE LOADING")
         }
-        print("UPDATE: \(self.thisID) at pos \(self.center)")
+        print("UPDATE: \(self.thisID) at pos \(self.center) in: \(vc.currentBoardName)")
     }
     
     //Remove from both view and Core Data
