@@ -39,6 +39,16 @@ class Edit_noteView: UIView, UIImagePickerControllerDelegate, UINavigationContro
         selectHeight.delegate = self
         selectHeight.backgroundColor = UIColor.red
         self.addSubview(selectHeight)
+        
+        /*let fontFamilyNames = UIFont.familyNames
+         for familyName in fontFamilyNames
+         {
+         print("---------------")
+         print("Font Family Name = [\(familyName)]")
+         let names = UIFont.fontNames(forFamilyName: familyName)
+         print("Font Names = [\(names)]")
+         }
+         */
     }
     
     required init?(coder aDecoder: NSCoder) {

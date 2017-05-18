@@ -34,14 +34,14 @@ class note: UIView, UITextViewDelegate{
         let tapRecoqnizer = UITapGestureRecognizer(target: self, action:#selector(self.detectTap(_:)))
         self.addGestureRecognizer(tapRecoqnizer)
         
-        textField.delegate = self
-        
         //Create Textfield
         textField.frame = CGRect(0,0,self.bounds.maxX, self.bounds.maxY)
         textField.isUserInteractionEnabled = false
         textField.backgroundColor = UIColor.clear
+        textField.delegate = self
         self.addSubview(textField)
-        self.layer.shadowOpacity = 0
+        
+        //self.layer.shadowOpacity = 0
         //self.transform = CGAffineTransform(rotationAngle: 45)   
     }
     required init?(coder aDecoder: NSCoder) {
@@ -63,21 +63,21 @@ class note: UIView, UITextViewDelegate{
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.5
         self.layer.shadowOffset = CGSize(0,10.0)
-       // self.layer.shouldRasterize = true;
-            if(sender?.state == UIGestureRecognizerState.ended)
-            {
-            //If moved outside of the slates area will be deleted
-            if(self.center.x > 0 && self.center.x < (superview?.frame.width)! && self.center.y > 0 && self.center.y < (superview?.frame.height)!)
-            {
-                self.transform = CGAffineTransform(scaleX: 1, y: 1)
-                self.layer.shadowOpacity = 0
-                Update()
-            }
-            else
-            {
-                Remove()
-            }
-            }
+       
+        if(sender?.state == UIGestureRecognizerState.ended)
+        {
+        //If moved outside of the slates area will be deleted
+        if(self.center.x > 0 && self.center.x < (superview?.frame.width)! && self.center.y > 0 && self.center.y < (superview?.frame.height)!)
+        {
+            self.transform = CGAffineTransform(scaleX: 1, y: 1)
+            self.layer.shadowOpacity = 0
+            Update()
+        }
+        else
+        {
+            Remove()
+        }
+        }
     }
     
     func detectTap(_ sender: UITapGestureRecognizer? = nil)
@@ -85,7 +85,6 @@ class note: UIView, UITextViewDelegate{
         print("TAP NOTE")
         textField.isUserInteractionEnabled = true;
         self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-        //vc.NextView()
     }
     
     func Update()
@@ -93,6 +92,7 @@ class note: UIView, UITextViewDelegate{
         guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = AppDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Note")
+        fetchRequest.predicate = NSPredicate(format: "boardName == %@", vc.currentBoardName)
         fetchRequest.predicate = NSPredicate(format: "id == %i", (self.thisID))
         
         do{
@@ -120,7 +120,9 @@ class note: UIView, UITextViewDelegate{
         guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = AppDelegate.persistentContainer.viewContext
         let noteFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Note")
+        noteFetchRequest.predicate = NSPredicate(format: "boardName == %@", vc.currentBoardName)
         noteFetchRequest.predicate = NSPredicate(format: "id == %i", (self.thisID))
+        
         do{
             let data = try managedContext.fetch(noteFetchRequest)
             if(data.count > 0)
@@ -144,6 +146,5 @@ class note: UIView, UITextViewDelegate{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.superview?.bringSubview(toFront: self)
         lastLocation = self.center
-        print("\(self.thisID): \(self.thisPosition)")
     }
 }

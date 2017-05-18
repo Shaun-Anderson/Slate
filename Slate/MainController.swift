@@ -11,14 +11,22 @@ import CoreData
 
 class MainController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
+    //Mark: Variables
+    //Lists of the different objects that are on the board
     var noteList = [note]()
     var imageList = [image]()
     var drawList = [drawing]()
     
     var lastLocation:CGPoint = CGPoint(0,0)
-    var menuOpen = false
     
+    
+    var menuOpen = false
+    var boardMenuOpen = false
+    
+    //References to the menus
     var controlview = UIView()
+    var boardMenu = UIView()
+    
     var board = UIView()
     var currentBoardName = "My Slate"
     
@@ -26,6 +34,8 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var selectedImage = UIImage()
     var selectedImageView = UIImageView()
     
+    
+    //Mark: Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,7 +47,6 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         board = newboard
         board.center = self.view.center
         self.view.addSubview(board)
-        CreateBoard(name: currentBoardName)
         
         //Create Add Menu
         let newControl = controlView(frame: CGRect(self.view.frame.width, 0,64,1000))
@@ -52,36 +61,31 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let addMenuButton = UIButton(frame: CGRect(self.view.frame.width - 100,50,64,64))
         addMenuButton.backgroundColor = UIColor.blue
         addMenuButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
-        addMenuButton.addTarget(self, action: #selector(self.OpenMenu), for: .touchUpInside)
+        addMenuButton.addTarget(self, action: #selector(self.OpenAddMenu), for: .touchUpInside)
         self.view.addSubview(addMenuButton)
         
-        
-        
         //Create Menu Button
-        let menuButton = UIButton(frame: CGRect(self.view.frame.minX + 50,50,64,64))
+        let menuButton = UIButton(frame: CGRect(10,50,52,52))
         menuButton.backgroundColor = UIColor.black
         menuButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
-        menuButton.addTarget(self, action: #selector(self.OpenMenu), for: .touchUpInside)
+        menuButton.addTarget(self, action: #selector(self.OpenBoardMenu), for: .touchUpInside)
         self.view.addSubview(menuButton)
         
         //Create Menu
+        let newBoardMenu = BoardMenu(frame: CGRect(-64, 0,64,1000))
+        newBoardMenu.vc = self
+        newBoardMenu.autoresizingMask = [ .flexibleLeftMargin,.flexibleBottomMargin]
+        newBoardMenu.autoresizesSubviews = true
+        boardMenu = newBoardMenu
+        self.view.addSubview(boardMenu)
+        boardMenu.layer.zPosition = CGFloat.greatestFiniteMagnitude
         
-        
-        /*let fontFamilyNames = UIFont.familyNames
-        for familyName in fontFamilyNames
-        {
-            print("---------------")
-            print("Font Family Name = [\(familyName)]")
-            let names = UIFont.fontNames(forFamilyName: familyName)
-            print("Font Names = [\(names)]")
-        }
-        */
-        
+        //Load all objects onto the board
         LoadNote()
         LoadImage()
     }
     
-    func OpenMenu()
+    func OpenAddMenu()
     {
         menuOpen = !menuOpen
         if(menuOpen)
@@ -94,6 +98,18 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    func OpenBoardMenu()
+    {
+        boardMenuOpen = !boardMenuOpen
+        if(boardMenuOpen)
+        {
+            UIView.animate(withDuration: 0.25, animations: {self.boardMenu.frame = CGRect(10,0,64,1000)}, completion: nil)
+        }
+        else
+        {
+            UIView.animate(withDuration: 0.25, animations: {self.boardMenu.frame = CGRect(-64,0,64,1000)}, completion: nil)
+        }
+    }
 
     
     override func didReceiveMemoryWarning() {
@@ -163,6 +179,7 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let managedContext = AppDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Note", in: managedContext)
         let note = NSManagedObject(entity: entity!, insertInto: managedContext)
+        note.setValue(currentBoardName, forKey: "boardName")
         note.setValue(name, forKey: "position")
         note.setValue(noteList.count, forKey: "id")
         note.setValue(backColor, forKey: "color")
@@ -174,10 +191,12 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
     {
         guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = AppDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Note")
+        
+        let noteFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Note")
+        noteFetchRequest.predicate = NSPredicate(format: "boardName == %@", (currentBoardName))
         
         do{
-            let data = try managedContext.fetch(fetchRequest)
+            let data = try managedContext.fetch(noteFetchRequest)
             print(data.count)
             if(data.count > 0)
             {
@@ -195,7 +214,7 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     
                     board.addSubview(newView)
                     noteList.append(newView)
-                    print("LOADED: \(newView.thisID) at pos: \(location)")
+                    print("LOADED: \(newView.thisID) at pos: \(location) from \(currentBoardName)")
                 }
             }
         } catch _ as NSError
@@ -255,7 +274,7 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
             let data = try managedContext.fetch(fetchRequest)
             if(data.count > 0)
             {
-                //Get note amount
+                //Get unique id from numNotes value of Board
                 let noteID = data[0].value(forKey: "numNotes") as! Int
                 data[0].setValue((noteID) + 1, forKey: "numNotes")
  
@@ -295,8 +314,8 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
             if(data.count > 0)
             {
                 //Get note amount
-                let noteID = data[0].value(forKey: "numImages") as! Int
-                data[0].setValue((noteID) + 1, forKey: "numImages")
+                let imageID = data[0].value(forKey: "numImages") as! Int
+                data[0].setValue((imageID) + 1, forKey: "numImages")
                 
                 let newView = image(frame: CGRect(450,300,200,150))
                 
@@ -343,41 +362,6 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.present(image, animated: true, completion: nil)
     }
     
-    //Clears the data from history
-    @IBAction func clearButtonPressed(_ sender: UIButton) {
-        
-        guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-        let managedContext = AppDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Image")
-        
-        do{
-            let data = try managedContext.fetch(fetchRequest)
-            if(data.count > 0)
-            {
-                for datas in data
-                {
-                    managedContext.delete(datas)
-                }
-            }
-        } catch _ as NSError
-        {
-            print("ISSUE deleting")
-        }
-        
-        do{
-            try managedContext.save()
-        } catch _ as NSError
-        {
-            print("Error saving")
-        }
-        
-        for note in noteList
-        {
-            noteList.removeAll()
-            note.removeFromSuperview()
-        }
-    }
-    
     
     //Rebuild the control parts if device is rotated
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -390,6 +374,7 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
  
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
     {
         

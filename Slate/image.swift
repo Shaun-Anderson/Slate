@@ -51,7 +51,7 @@ class image: UIImageView {
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.5
         self.layer.shadowOffset = CGSize(0,10.0)
-        self.layer.shouldRasterize = true;
+        self.layer.shouldRasterize = false;
         
         if(sender?.state == UIGestureRecognizerState.ended)
         {
@@ -66,7 +66,7 @@ class image: UIImageView {
             }
             else
             {
-                //Remove()
+                Remove()
             }
         }
     }
@@ -99,7 +99,28 @@ class image: UIImageView {
     
     func Remove()
     {
+        guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let managedContext = AppDelegate.persistentContainer.viewContext
+        let noteFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Image")
+        noteFetchRequest.predicate = NSPredicate(format: "id == %i", (self.thisID))
+        do{
+            let data = try managedContext.fetch(noteFetchRequest)
+            if(data.count > 0)
+            {
+                for datas in data
+                {
+                    managedContext.delete(datas)
+                }
+            }
+            try managedContext.save()
+        } catch _ as NSError
+        {
+            print("ISSUE deleting")
+        }
         
+        let index = vc.imageList.index(of: self)
+        vc.imageList.remove(at: index!)
+        self.removeFromSuperview()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

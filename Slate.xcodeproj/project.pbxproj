@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A47DF0C1ECD4090005F3F6F /* BoardMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A47DF0B1ECD4090005F3F6F /* BoardMenu.swift */; };
 		CA4896CF1EC2F67B008B341F /* BoardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4896CE1EC2F67B008B341F /* BoardCollectionViewCell.swift */; };
 		CA4896D11EC3132B008B341F /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4896D01EC3132B008B341F /* AddController.swift */; };
 		CA9296651EB4BF7700159FA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296641EB4BF7700159FA0 /* AppDelegate.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A47DF0B1ECD4090005F3F6F /* BoardMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardMenu.swift; sourceTree = "<group>"; };
 		CA4896CE1EC2F67B008B341F /* BoardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA4896D01EC3132B008B341F /* AddController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
 		CA9296611EB4BF7700159FA0 /* Slate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +132,7 @@
 				CA9296701EB4BF7700159FA0 /* LaunchScreen.storyboard */,
 				CA9296641EB4BF7700159FA0 /* AppDelegate.swift */,
 				CA9296AD1EB4C37500159FA0 /* controlView.swift */,
+				2A47DF0B1ECD4090005F3F6F /* BoardMenu.swift */,
 				CA9296AB1EB4C35C00159FA0 /* boardView.swift */,
 				CA4896D01EC3132B008B341F /* AddController.swift */,
 				CA9296A91EB4C32A00159FA0 /* MainController.swift */,
@@ -251,7 +254,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Shaun Anderson";
 				TargetAttributes = {
 					CA9296601EB4BF7700159FA0 = {
@@ -329,6 +332,7 @@
 				CA9296A61EB4C2D900159FA0 /* Edit_imageView.swift in Sources */,
 				CA9296AA1EB4C32A00159FA0 /* MainController.swift in Sources */,
 				CA4896D11EC3132B008B341F /* AddController.swift in Sources */,
+				2A47DF0C1ECD4090005F3F6F /* BoardMenu.swift in Sources */,
 				CA9296A41EB4C25600159FA0 /* drawing.swift in Sources */,
 				CA4896CF1EC2F67B008B341F /* BoardCollectionViewCell.swift in Sources */,
 				CA9296671EB4BF7700159FA0 /* MenuController.swift in Sources */,
@@ -409,6 +413,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -459,6 +464,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

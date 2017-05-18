@@ -141,7 +141,12 @@ class boardView: UIView, UIGestureRecognizerDelegate{
         
         if(vc.menuOpen)
         {
-            vc.OpenMenu()
+            vc.OpenAddMenu()
+        }
+        
+        if(vc.boardMenuOpen)
+        {
+            vc.OpenBoardMenu()
         }
     }
 }
