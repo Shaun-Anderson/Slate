@@ -16,6 +16,7 @@ class controlView: UIView{
     override init(frame: CGRect){
         super.init(frame: frame)
         
+        //
         //CreateButtons
         let button = UIButton(frame: CGRect(0,0,52,52))
         button.backgroundColor = UIColor.gray
