@@ -22,8 +22,8 @@ class Edit_imageView: UIView, UIImagePickerControllerDelegate, UINavigationContr
         let selectImageGalleryButton = UIButton(frame: CGRect(10,5,50,50))
         selectImageGalleryButton.backgroundColor = UIColor.red
         selectImageGalleryButton.addTarget(self, action: #selector(self.ChangeImageGallery), for: .touchUpInside)
+        selectImageGalleryButton.setImage(UIImage(named: "Folder"), for: .normal)
         selectImageGalleryButton.layer.cornerRadius = 4.0
-        selectImageGalleryButton.setTitle("GALLERY", for: .normal)
         selectImageGalleryButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
         self.addSubview(selectImageGalleryButton)
         
@@ -33,8 +33,8 @@ class Edit_imageView: UIView, UIImagePickerControllerDelegate, UINavigationContr
         selectImageGalleryButton.tag = 1
         selectImageCameraButton.backgroundColor = UIColor.red
         selectImageCameraButton.addTarget(vc, action: #selector(self.ChangeImageCamera), for: .touchUpInside)
+        selectImageCameraButton.setImage(UIImage(named: "Camera"), for: .normal)
         selectImageCameraButton.layer.cornerRadius = 4.0
-        selectImageCameraButton.setTitle("CAMERA", for: .normal)
         selectImageCameraButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
         self.addSubview(selectImageCameraButton)
         
@@ -94,7 +94,7 @@ class Edit_imageView: UIView, UIImagePickerControllerDelegate, UINavigationContr
             newImage = foundImage
             thisImageView?.image = newImage
             let imageData = UIImagePNGRepresentation(foundImage);
-            thisImageView?.Update(imgData: imageData!)
+            thisImageView?.UpdateImg(imgData: imageData!)
             self.removeFromSuperview()
         }
         else

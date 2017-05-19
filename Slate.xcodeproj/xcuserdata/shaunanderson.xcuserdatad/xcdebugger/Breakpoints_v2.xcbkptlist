@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Slate/MainController.swift"
-            timestampString = "515504982.081975"
+            timestampString = "516842808.186966"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "LoadNote()"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Slate/MainController.swift"
-            timestampString = "515504982.081975"
+            timestampString = "516842808.186966"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "LoadNote()"
             landmarkType = "7">
          </BreakpointContent>

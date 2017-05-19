@@ -48,37 +48,45 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         board.center = self.view.center
         self.view.addSubview(board)
         
-        //Create Add Menu
-        let newControl = controlView(frame: CGRect(self.view.frame.width, 0,64,1000))
-        newControl.vc = self
-        newControl.autoresizingMask = [ .flexibleLeftMargin,.flexibleBottomMargin]
-        newControl.autoresizesSubviews = true
-        controlview = newControl
-        self.view.addSubview(controlview)
-        controlview.layer.zPosition = CGFloat.greatestFiniteMagnitude
+        //Buttons
+        let addMenuButton = UIButton(frame: CGRect(self.view.frame.width - 70,50,52,52))
+        addMenuButton.tintColor = UIColor.darkGray
         
-        //Create Add Menu Button
-        let addMenuButton = UIButton(frame: CGRect(self.view.frame.width - 100,50,64,64))
-        addMenuButton.backgroundColor = UIColor.blue
+        let img = UIImage(named: "Add")
+        let tintedImage = img?.withRenderingMode(.alwaysTemplate)
+        addMenuButton.backgroundColor = UIColor.gray
+        addMenuButton.setImage(tintedImage, for: .normal)
+        addMenuButton.layer.cornerRadius = 0.5 * addMenuButton.bounds.size.width
+        addMenuButton.clipsToBounds = true
         addMenuButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
         addMenuButton.addTarget(self, action: #selector(self.OpenAddMenu), for: .touchUpInside)
         self.view.addSubview(addMenuButton)
         
-        //Create Menu Button
-        let menuButton = UIButton(frame: CGRect(10,50,52,52))
-        menuButton.backgroundColor = UIColor.black
+        let menuButton = UIButton(frame: CGRect(20,50,52,52))
+        menuButton.backgroundColor = UIColor.gray
+        menuButton.setImage(UIImage(named: "Menu"), for: .normal)
+        menuButton.layer.cornerRadius = 0.5 * menuButton.bounds.size.width
+        menuButton.clipsToBounds = true
         menuButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin]
         menuButton.addTarget(self, action: #selector(self.OpenBoardMenu), for: .touchUpInside)
         self.view.addSubview(menuButton)
         
-        //Create Menu
-        let newBoardMenu = BoardMenu(frame: CGRect(-64, 0,64,1000))
+        //Create Menus
+        let newBoardMenu = BoardMenu(frame: CGRect(-52, 125,52,1000))
         newBoardMenu.vc = self
         newBoardMenu.autoresizingMask = [ .flexibleLeftMargin,.flexibleBottomMargin]
         newBoardMenu.autoresizesSubviews = true
         boardMenu = newBoardMenu
         self.view.addSubview(boardMenu)
         boardMenu.layer.zPosition = CGFloat.greatestFiniteMagnitude
+        
+        let newControl = controlView(frame: CGRect(self.view.frame.width, 125,52,1000))
+        newControl.vc = self
+        newControl.autoresizingMask = [ .flexibleLeftMargin,.flexibleBottomMargin]
+        newControl.autoresizesSubviews = true
+        controlview = newControl
+        self.view.addSubview(controlview)
+        controlview.layer.zPosition = CGFloat.greatestFiniteMagnitude
         
         //Load all objects onto the board
         LoadNote()
@@ -88,13 +96,14 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func OpenAddMenu()
     {
         menuOpen = !menuOpen
+        print(menuOpen)
         if(menuOpen)
         {
-           UIView.animate(withDuration: 0.25, animations: {self.controlview.frame = CGRect(self.view.frame.width - 100,0,64,1000)}, completion: nil)
+            UIView.animate(withDuration: 0.25, animations: {self.controlview.frame = CGRect(self.view.frame.width - 70,125,52,1000)}, completion: nil)
         }
         else
         {
-            UIView.animate(withDuration: 0.25, animations: {self.controlview.frame = CGRect(self.view.frame.width,0,64,1000)}, completion: nil)
+            UIView.animate(withDuration: 0.25, animations: {self.controlview.frame = CGRect(self.view.frame.width,125,52,1000)}, completion: nil)
         }
     }
     
@@ -103,11 +112,11 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         boardMenuOpen = !boardMenuOpen
         if(boardMenuOpen)
         {
-            UIView.animate(withDuration: 0.25, animations: {self.boardMenu.frame = CGRect(10,0,64,1000)}, completion: nil)
+            UIView.animate(withDuration: 0.25, animations: {self.boardMenu.frame = CGRect(20,125,52,1000)}, completion: nil)
         }
         else
         {
-            UIView.animate(withDuration: 0.25, animations: {self.boardMenu.frame = CGRect(-64,0,64,1000)}, completion: nil)
+            UIView.animate(withDuration: 0.25, animations: {self.boardMenu.frame = CGRect(-52,125,52,1000)}, completion: nil)
         }
     }
 
@@ -117,43 +126,7 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Dispose of any resources that can be recreated.
     }
     
-    //Will check through current data to ensure you do not create a board with the same name
-    func CreateBoard(name: String)
-    {
-        guard let AppDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
-        let managedContext = AppDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Board")
-        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
-        
-        do{
-            let data = try managedContext.fetch(fetchRequest)
-            print(data.count)
-            if(data.count == 0)
-            {
-                let entity = NSEntityDescription.entity(forEntityName: "Board", in: managedContext)
-                let slate = NSManagedObject(entity: entity!, insertInto: managedContext)
-                
-                slate.setValue(name, forKey: "name")
-                slate.setValue(0, forKey: "numNotes")
-                
-                do{
-                    try managedContext.save()
-                } catch _ as NSError
-                {
-                    print("Error saving")
-                }
-                print("CREATED SLATE NAMED: \(name)")
-            }
-            else
-            {
-                print("Slate already exists")
-            }
-        } catch _ as NSError
-        {
-            print("ISSUE LOADING")
-        }
-    }
-    
+
     func SaveImage(image: UIImage, position: String, width: Double, height: Double)
     {
         print("SAVING: IMAGE")
@@ -161,12 +134,13 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let managedContext = AppDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Image", in: managedContext)
-        let note = NSManagedObject(entity: entity!, insertInto: managedContext)
+        let newImage = NSManagedObject(entity: entity!, insertInto: managedContext)
         
         let imageData = UIImagePNGRepresentation(image);
-        note.setValue(position, forKey: "position")
-        note.setValue(imageData, forKey: "imageData")
-        note.setValue(imageList.count, forKey: "id")
+        newImage.setValue(currentBoardName, forKey: "boardName")
+        newImage.setValue(position, forKey: "position")
+        newImage.setValue(imageData, forKey: "imageData")
+        newImage.setValue(imageList.count, forKey: "id")
         do{ try managedContext.save() } catch _ as NSError { print("Error saving") }
     }
     
@@ -227,7 +201,9 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
     {
         guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = AppDelegate.persistentContainer.viewContext
+        
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Image")
+        fetchRequest.predicate = NSPredicate(format: "boardName == %@", (currentBoardName))
         
         do{
             let data = try managedContext.fetch(fetchRequest)

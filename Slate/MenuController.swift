@@ -9,12 +9,17 @@
 import UIKit
 import CoreData
 
-class MenuController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class MenuController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var button: UIButton!
     
     @IBOutlet weak var boardCollection: UICollectionView!
     var boards = [Board]()
+    
+    var cellWidth:CGFloat = 0
+    var cellHeight:CGFloat = 0
+    var spacing:CGFloat = 12
+    var numberOfColumns:CGFloat = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +28,14 @@ class MenuController: UIViewController, UICollectionViewDelegate, UICollectionVi
         ReloadBoards()
         self.boardCollection.delegate = self
         self.boardCollection.dataSource = self;
+        
+        cellWidth = ((boardCollection.frame.width) - (numberOfColumns + 1) * spacing)/numberOfColumns
+        cellHeight = cellWidth
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: cellWidth, height: cellHeight)
+    }
     //CAN BE USED TO ENSURE AN ITNITAL BOARD
     func CreateBoard(name: String)
     {
@@ -122,4 +133,3 @@ class MenuController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
    
 }
-

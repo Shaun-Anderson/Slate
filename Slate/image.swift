@@ -61,7 +61,7 @@ class image: UIImageView {
                 self.transform = CGAffineTransform(scaleX: 1, y: 1)
                 self.layer.shadowOpacity = 0
                 let imageData = UIImagePNGRepresentation(image!);
-                Update(imgData: imageData!)
+                Update()
                 
             }
             else
@@ -71,7 +71,30 @@ class image: UIImageView {
         }
     }
     
-    func Update(imgData: Data)
+    func UpdateImg(imgData: Data)
+    {
+        guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let managedContext = AppDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Image")
+        fetchRequest.predicate = NSPredicate(format: "id == %i", (self.thisID))
+        
+        do{
+            let data = try managedContext.fetch(fetchRequest)
+            print(data.count)
+            if(data.count == 1)
+            {
+                let managedObject = data[0]
+                managedObject.setValue(imgData, forKey: "imageData")
+            }
+            try managedContext.save()
+        } catch _ as NSError
+        {
+            print("ISSUE LOADING")
+        }
+        print("UPDATE: IMAGE (\(self.thisID)) IMAGE")
+    }
+    
+    func Update()
     {
         guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = AppDelegate.persistentContainer.viewContext
@@ -87,7 +110,6 @@ class image: UIImageView {
                 let newLocation: CGPoint = CGPoint(self.center.x - (self.frame.width/2),self.center.y - (self.frame.height/2))
                 managedObject.setValue(NSStringFromCGPoint(newLocation), forKey: "position")
                 
-                managedObject.setValue(imgData, forKey: "imageData")
             }
             try managedContext.save()
         } catch _ as NSError

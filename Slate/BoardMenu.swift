@@ -17,17 +17,22 @@ class BoardMenu: UIView {
         super.init(frame: frame)
         
         //Create buttons
-        let homeButton = UIButton(frame: CGRect(0,129,64,64))
+        let homeButton = UIButton(frame: CGRect(0,0,52,52))
         homeButton.backgroundColor = UIColor.red
         homeButton.addTarget(vc, action: #selector(self.ReturnHome), for: .touchUpInside)
         homeButton.setTitle("Home", for: .normal)
+        homeButton.layer.cornerRadius = 0.5 * homeButton.bounds.size.width
+        homeButton.clipsToBounds = true
+        homeButton.setImage(UIImage(named: "Home"), for: .normal)
         homeButton.autoresizingMask = [.flexibleRightMargin, .flexibleBottomMargin, .flexibleTopMargin]
         self.addSubview(homeButton)
         
-        let clearButton = UIButton(frame: CGRect(0,208,64,64))
+        let clearButton = UIButton(frame: CGRect(0,72,52,52))
         clearButton.backgroundColor = UIColor.red
         clearButton.addTarget(vc, action: #selector(self.ClearBoard), for: .touchUpInside)
         clearButton.setTitle("Clear", for: .normal)
+        clearButton.layer.cornerRadius = 0.5 * clearButton.bounds.size.width
+        clearButton.clipsToBounds = true
         clearButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
         self.addSubview(clearButton)
         
