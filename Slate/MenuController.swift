@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 class MenuController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
@@ -20,6 +21,8 @@ class MenuController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var cellHeight:CGFloat = 0
     var spacing:CGFloat = 12
     var numberOfColumns:CGFloat = 2
+    
+    var soundPlayer : AVAudioPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,6 +132,21 @@ class MenuController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = boardCollection.cellForItem(at: indexPath) as! BoardCollectionViewCell
         MoveToMain(boardName: cell.boardNameLabel.text!)
+        
+        //Play Sound
+        if let path = Bundle.main.path(forResource: "SelectSound", ofType: "mp3")
+        {
+            let url = URL(fileURLWithPath: path)
+            
+            do{
+                try soundPlayer = AVAudioPlayer(contentsOf: url)
+            } catch{print ("file not found")}
+        }
+        else
+        {
+            print("path not found")
+        }
+        
     }
 
    
