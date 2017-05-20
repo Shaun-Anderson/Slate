@@ -14,7 +14,10 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //Mark: Variables
     //Lists of the different objects that are on the board
     var noteList = [note]()
+    var numNotes = Int()
+    
     var imageList = [image]()
+    var numImages = Int()
     var drawList = [drawing]()
     
     var lastLocation:CGPoint = CGPoint(0,0)
@@ -128,7 +131,7 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     func SaveImage(image: UIImage, position: String, width: Double, height: Double)
     {
-        print("SAVING: IMAGE")
+        print("SAVING IMAGE: \(numImages + 1)")
         guard let AppDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
         
         let managedContext = AppDelegate.persistentContainer.viewContext
@@ -139,14 +142,14 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         newImage.setValue(currentBoardName, forKey: "boardName")
         newImage.setValue(position, forKey: "position")
         newImage.setValue(imageData, forKey: "imageData")
-        newImage.setValue(imageList.count, forKey: "id")
+        newImage.setValue(numImages + 1, forKey: "id")
         do{ try managedContext.save() } catch _ as NSError { print("Error saving") }
     }
     
     
     func save(name: String, backColor: String, text: String)
     {
-        print("SAVING: \(name)")
+        print("SAVING NOTE: \(name) + \(numNotes + 1)")
         guard let AppDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
         
         let managedContext = AppDelegate.persistentContainer.viewContext
@@ -154,7 +157,7 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let note = NSManagedObject(entity: entity!, insertInto: managedContext)
         note.setValue(currentBoardName, forKey: "boardName")
         note.setValue(name, forKey: "position")
-        note.setValue(noteList.count, forKey: "id")
+        note.setValue(numNotes + 1, forKey: "id")
         note.setValue(backColor, forKey: "color")
         note.setValue(text, forKey: "text")
         do{ try managedContext.save() } catch _ as NSError { print("Error saving") }
@@ -250,13 +253,13 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
             if(data.count > 0)
             {
                 //Get unique id from numNotes value of Board
-                let noteID = data[0].value(forKey: "numNotes") as! Int
-                data[0].setValue((noteID) + 1, forKey: "numNotes")
+                numNotes = data[0].value(forKey: "numNotes") as! Int
+                data[0].setValue((numNotes) + 1, forKey: "numNotes")
  
                 let newView = note(frame: CGRect(450,300,100,100))
                 newView.vc = self
                 newView.layer.zPosition = 0
-                newView.thisID = Int64(noteID)
+                newView.thisID = numNotes + 1
                 
                 newView.backgroundColor = UIColor.white
                 
@@ -289,12 +292,13 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
             if(data.count > 0)
             {
                 //Get note amount
-                let imageID = data[0].value(forKey: "numImages") as! Int
-                data[0].setValue((imageID) + 1, forKey: "numImages")
+                numImages = data[0].value(forKey: "numImages") as! Int
+                data[0].setValue((numImages) + 1, forKey: "numImages")
                 
                 let newView = image(frame: CGRect(450,300,200,150))
                 
                 newView.vc = self
+                newView.thisID = numImages + 1
                 newView.layer.zPosition = 0
                 newView.layer.borderWidth = 2
                 newView.layer.borderColor = UIColor.white.cgColor

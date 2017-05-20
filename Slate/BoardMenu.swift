@@ -13,24 +13,37 @@ class BoardMenu: UIView {
 
     var vc = MainController()
     
+    
     override init(frame: CGRect){
         super.init(frame: frame)
         
+        
+        var img = UIImage()
+        var tintedImg = UIImage()
+        
         //Create buttons
         let homeButton = UIButton(frame: CGRect(0,0,52,52))
-        homeButton.backgroundColor = UIColor.red
+        homeButton.backgroundColor = UIColor.white
+        homeButton.tintColor = UIColor.gray
+        img = UIImage(named: "Home")!
+        tintedImg = img.withRenderingMode(.alwaysTemplate)
+        
         homeButton.addTarget(vc, action: #selector(self.ReturnHome), for: .touchUpInside)
-        homeButton.setTitle("Home", for: .normal)
         homeButton.layer.cornerRadius = 0.5 * homeButton.bounds.size.width
         homeButton.clipsToBounds = true
-        homeButton.setImage(UIImage(named: "Home"), for: .normal)
+        homeButton.setImage(tintedImg, for: .normal)
+        homeButton.layer.borderWidth = 2
+        homeButton.layer.borderColor = UIColor.darkGray.cgColor
         homeButton.autoresizingMask = [.flexibleRightMargin, .flexibleBottomMargin, .flexibleTopMargin]
         self.addSubview(homeButton)
         
         let clearButton = UIButton(frame: CGRect(0,72,52,52))
-        clearButton.backgroundColor = UIColor.red
+        clearButton.backgroundColor = UIColor.white
         clearButton.addTarget(vc, action: #selector(self.ClearBoard), for: .touchUpInside)
         clearButton.setTitle("Clear", for: .normal)
+        clearButton.setTitleColor(.black, for: .normal)
+        clearButton.layer.borderWidth = 2
+        clearButton.layer.borderColor = UIColor.darkGray.cgColor
         clearButton.layer.cornerRadius = 0.5 * clearButton.bounds.size.width
         clearButton.clipsToBounds = true
         clearButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
