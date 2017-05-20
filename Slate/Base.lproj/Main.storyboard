@@ -31,6 +31,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rau-RP-dUO">
                                 <rect key="frame" x="0.0" y="821" width="768" height="86"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="ADD"/>
                                 <connections>
                                     <action selector="CheckSave" destination="GbE-9v-ihm" eventType="touchUpInside" id="ZgY-xW-JvJ"/>
@@ -43,13 +44,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lw4-WG-G7C">
+                                <rect key="frame" x="20" y="56" width="114" height="67"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="CANCEL"/>
+                                <connections>
+                                    <action selector="Cancel" destination="GbE-9v-ihm" eventType="touchUpInside" id="1Px-hd-6kA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="boardNameTextfield" destination="IAR-9m-RlN" id="JXA-ja-zWB"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="AddToMenu" id="Qh1-ND-MjC"/>
-                        <segue destination="ola-UU-NtI" kind="show" identifier="AddToMain" id="Ux6-X8-qBe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pbj-6M-Ja8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -68,7 +76,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JMq-QZ-iHw">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JMq-QZ-iHw">
                                 <rect key="frame" x="33" y="131" width="702" height="893"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -123,8 +131,6 @@
                     </view>
                     <connections>
                         <outlet property="boardCollection" destination="JMq-QZ-iHw" id="aae-nS-dRC"/>
-                        <segue destination="ola-UU-NtI" kind="show" identifier="moveToMain" id="fML-AW-qnl"/>
-                        <segue destination="GbE-9v-ihm" kind="show" identifier="moveToAdd" id="Eyw-uj-3pq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -154,9 +160,4 @@
             <point key="canvasLocation" x="1198" y="103"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Eyw-uj-3pq"/>
-        <segue reference="lE9-gZ-EZH"/>
-        <segue reference="fML-AW-qnl"/>
-    </inferredMetricsTieBreakers>
 </document>

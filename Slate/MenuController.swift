@@ -140,6 +140,8 @@ class MenuController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             do{
                 try soundPlayer = AVAudioPlayer(contentsOf: url)
+                soundPlayer.play()
+                print("Audio played")
             } catch{print ("file not found")}
         }
         else

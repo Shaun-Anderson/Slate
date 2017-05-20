@@ -34,6 +34,12 @@ class AddController: UIViewController {
         }
     }
     
+    @IBAction func Cancel()
+    {
+        let newVC = self.storyboard?.instantiateViewController(withIdentifier: "menu") as! MenuController
+        present(newVC, animated: true, completion: nil)
+    }
+    
     func SaveBoard(name: String)
     {
         guard let AppDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
@@ -60,6 +66,7 @@ class AddController: UIViewController {
                 }
                 print("CREATED SLATE NAMED: \(name)")
                 let newVC = self.storyboard?.instantiateViewController(withIdentifier: "main") as! MainController
+                newVC.currentBoardName = name
                 present(newVC, animated: true, completion: nil)
             }
             else
@@ -70,20 +77,6 @@ class AddController: UIViewController {
         {
             print("ISSUE LOADING")
         }
-    }
-
-    //SEGUE FUNCTIONS
-    func MoveToMain(boardName: String)
-    {
-        let newVC = self.storyboard?.instantiateViewController(withIdentifier: "AddToMain") as! MainController
-        newVC.currentBoardName = boardName
-        present(newVC, animated: true, completion: nil)
-    }
-    
-    func MoveToMenu()
-    {
-        let newVC = self.storyboard?.instantiateViewController(withIdentifier: "AddToMenu") as! MainController
-        present(newVC, animated: true, completion: nil)
     }
 
 }

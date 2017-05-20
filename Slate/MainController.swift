@@ -50,8 +50,7 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         //Buttons
         let addMenuButton = UIButton(frame: CGRect(self.view.frame.width - 70,50,52,52))
-        addMenuButton.tintColor = UIColor.darkGray
-        
+        addMenuButton.tintColor = UIColor.white
         let img = UIImage(named: "Add")
         let tintedImage = img?.withRenderingMode(.alwaysTemplate)
         addMenuButton.backgroundColor = UIColor.gray

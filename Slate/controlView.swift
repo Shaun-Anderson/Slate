@@ -16,21 +16,30 @@ class controlView: UIView{
     override init(frame: CGRect){
         super.init(frame: frame)
         
+        var img = UIImage()
+        var tintedImg = UIImage()
         //
         //CreateButtons
-        let button = UIButton(frame: CGRect(0,0,52,52))
-        button.backgroundColor = UIColor.gray
-        button.addTarget(vc, action: #selector(vc.AddNote), for: .touchUpInside)
-        button.layer.cornerRadius = 0.5 * button.bounds.size.width
-        button.clipsToBounds = true
-        button.setImage(UIImage(named: "Speech"), for: .normal)
-        button.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
-        self.addSubview(button)
+        let noteButton = UIButton(frame: CGRect(0,0,52,52))
+        noteButton.backgroundColor = UIColor(colorLiteralRed: 246/255.0, green: 247/255.0, blue: 220/255.0, alpha: 1.0)
+        noteButton.tintColor = UIColor.darkGray
+        img = UIImage(named: "Speech")!
+        tintedImg = img.withRenderingMode(.alwaysTemplate)
+        noteButton.addTarget(vc, action: #selector(vc.AddNote), for: .touchUpInside)
+        noteButton.layer.cornerRadius = 0.5 * noteButton.bounds.size.width
+        noteButton.clipsToBounds = true
+        noteButton.layer.borderWidth = 2
+        noteButton.layer.borderColor = UIColor.darkGray.cgColor
+        noteButton.setImage(tintedImg, for: .normal)
+        noteButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
+        self.addSubview(noteButton)
         
         let imageButton = UIButton(frame: CGRect(0,72,52,52))
-        imageButton.backgroundColor = UIColor.red
+        imageButton.backgroundColor = UIColor.gray
         imageButton.layer.cornerRadius = 0.5 * imageButton.bounds.size.width
         imageButton.clipsToBounds = true
+        imageButton.layer.borderWidth = 2
+        imageButton.layer.borderColor = UIColor.darkGray.cgColor
         imageButton.addTarget(vc, action: #selector(vc.AddImage), for: .touchUpInside)
         imageButton.setImage(UIImage(named: "Image"), for: .normal)
         imageButton.setTitle("Image", for: .normal)
@@ -39,16 +48,16 @@ class controlView: UIView{
         
         let drawButton = UIButton(frame: CGRect(0,144,52,52))
         drawButton.backgroundColor = UIColor.white
+        img = UIImage(named: "Drawing")!
+        tintedImg = img.withRenderingMode(.alwaysTemplate)
         drawButton.layer.borderWidth = 2
         drawButton.layer.borderColor = UIColor.darkGray.cgColor
         drawButton.addTarget(vc, action: #selector(vc.AddDrawing), for: .touchUpInside)
-        let img = UIImage(named: "Drawing")
-        let tintedImage = img?.withRenderingMode(.alwaysTemplate)
         drawButton.setTitle("Drawing", for: .normal)
         drawButton.layer.cornerRadius = 0.5 * imageButton.bounds.size.width
         drawButton.clipsToBounds = true
         drawButton.tintColor = UIColor.darkGray
-        drawButton.setImage(tintedImage, for: .normal)
+        drawButton.setImage(tintedImg, for: .normal)
         drawButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
         self.addSubview(drawButton)
     }
