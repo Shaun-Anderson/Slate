@@ -32,8 +32,51 @@ class MenuController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.boardCollection.delegate = self
         self.boardCollection.dataSource = self;
         
+        let lpgr : UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action:#selector(self.handleLongPress))
+        boardCollection.addGestureRecognizer(lpgr)
         cellWidth = ((boardCollection.frame.width) - (numberOfColumns + 1) * spacing)/numberOfColumns
         cellHeight = cellWidth
+    }
+    
+    func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer)
+    {
+        if gestureRecognizer.state != UIGestureRecognizerState.ended
+        {
+            return
+        }
+        
+        let p = gestureRecognizer.location(in: self.boardCollection)
+        
+        if let indexPath : NSIndexPath = (self.boardCollection.indexPathForItem(at: p)) as NSIndexPath?
+        {
+            print("HIT STUFF + \(indexPath)")
+            let cell = boardCollection.cellForItem(at: indexPath as IndexPath) as! BoardCollectionViewCell
+            guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+            let managedContext = AppDelegate.persistentContainer.viewContext
+            
+            //Get note for this board
+            let noteFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Board")
+            noteFetchRequest.predicate = NSPredicate(format: "name == %@", (cell.boardNameLabel.text)!)
+            
+            do{
+                let data = try managedContext.fetch(noteFetchRequest)
+                if(data.count > 0)
+                {
+                    for datas in data
+                    {
+                        managedContext.delete(datas)
+                    }
+                }
+                try managedContext.save()
+            } catch _ as NSError
+            {
+                print("ISSUE deleting")
+            }
+            
+            ReloadBoards()
+        }
+        else{}
+        print("LONG PRESSSS + \(p)")
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -78,6 +121,8 @@ class MenuController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func ReloadBoards()
     {
+        
+        boards.removeAll()
         guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = AppDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Board")
@@ -96,6 +141,8 @@ class MenuController: UIViewController, UICollectionViewDelegate, UICollectionVi
         {
             print("ISSUE LOADING")
         }
+        
+        boardCollection.reloadData()
         
     }
 
