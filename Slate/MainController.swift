@@ -321,6 +321,7 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         if let foundImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         {
+            //Get image
             selectedImage = foundImage
             newImage.image = selectedImage
             board.addSubview(newImage)
