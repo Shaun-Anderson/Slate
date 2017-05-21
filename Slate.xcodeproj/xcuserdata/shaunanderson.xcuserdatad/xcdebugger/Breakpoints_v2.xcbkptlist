@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Slate/MenuController.swift"
-            timestampString = "516976167.758509"
+            timestampString = "517023727.259149"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "handleLongPress(gestureRecognizer:)"
             landmarkType = "7">
          </BreakpointContent>

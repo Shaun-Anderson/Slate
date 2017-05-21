@@ -66,7 +66,7 @@ class BoardMenu: UIView {
         guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = AppDelegate.persistentContainer.viewContext
         
-        //Get note for this board
+        //Get notes for this board and delete them
         let noteFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Note")
         noteFetchRequest.predicate = NSPredicate(format: "boardName == %@", (vc.currentBoardName))
         
@@ -84,11 +84,34 @@ class BoardMenu: UIView {
         {
             print("ISSUE deleting")
         }
-        
         for note in vc.noteList
         {
             vc.noteList.removeAll()
             note.removeFromSuperview()
+        }
+        
+        //Images
+        let imageFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Image")
+        imageFetchRequest.predicate = NSPredicate(format: "boardName == %@", (vc.currentBoardName))
+        
+        do{
+            let data = try managedContext.fetch(imageFetchRequest)
+            if(data.count > 0)
+            {
+                for datas in data
+                {
+                    managedContext.delete(datas)
+                }
+            }
+            try managedContext.save()
+        } catch _ as NSError
+        {
+            print("ISSUE deleting")
+        }
+        for image in vc.imageList
+        {
+            vc.imageList.removeAll()
+            image.removeFromSuperview()
         }
     }
 

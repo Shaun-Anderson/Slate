@@ -122,10 +122,11 @@ class image: UIImageView {
     {
         guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = AppDelegate.persistentContainer.viewContext
-        let noteFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Image")
-        noteFetchRequest.predicate = NSPredicate(format: "id == %i", (self.thisID))
+        let imageFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Image")
+        imageFetchRequest.predicate = NSPredicate(format: "boardName == %@", vc.currentBoardName)
+        imageFetchRequest.predicate = NSPredicate(format: "id == %i", (self.thisID))
         do{
-            let data = try managedContext.fetch(noteFetchRequest)
+            let data = try managedContext.fetch(imageFetchRequest)
             if(data.count > 0)
             {
                 for datas in data

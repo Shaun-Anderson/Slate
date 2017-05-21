@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MenuController.swift
 //  Slate
 //
 //  Created by Shaun Anderson on 29/04/2017.
@@ -12,18 +12,18 @@ import AVFoundation
 
 class MenuController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    //Mark: Variables
     @IBOutlet weak var button: UIButton!
-    
     @IBOutlet weak var boardCollection: UICollectionView!
-    var boards = [Board]()
     
+    var boards = [Board]()
     var cellWidth:CGFloat = 0
     var cellHeight:CGFloat = 0
     var spacing:CGFloat = 12
     var numberOfColumns:CGFloat = 2
-    
     var soundPlayer : AVAudioPlayer!
     
+    //Mark: Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -38,10 +38,17 @@ class MenuController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cellHeight = cellWidth
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //Deletes a slate if a long press is detected on it
     func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer)
     {
         if gestureRecognizer.state != UIGestureRecognizerState.ended
         {
+            //Put feedback to show possible deletion of slate
             return
         }
         
@@ -75,14 +82,10 @@ class MenuController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             ReloadBoards()
         }
-        else{}
-        print("LONG PRESSSS + \(p)")
+        print("LONG PRESS + \(p)")
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: cellWidth, height: cellHeight)
-    }
-    //CAN BE USED TO ENSURE AN ITNITAL BOARD
+
+    //Used to create an initial slate called "My Slate"
     func CreateBoard(name: String)
     {
         guard let AppDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
@@ -119,6 +122,7 @@ class MenuController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    //Deletes the data in [boards] and then loads it again and calls reload data on the collectionView
     func ReloadBoards()
     {
         
@@ -145,14 +149,8 @@ class MenuController: UIViewController, UICollectionViewDelegate, UICollectionVi
         boardCollection.reloadData()
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    
-    //SEGUE FUNCTIONS
+    //Mark: Stroyboard Functions
     func MoveToMain(boardName: String)
     {
         let newVC = self.storyboard?.instantiateViewController(withIdentifier: "main") as! MainController
@@ -166,6 +164,7 @@ class MenuController: UIViewController, UICollectionViewDelegate, UICollectionVi
         present(newVC, animated: true, completion: nil)
     }
     
+    //Mark: CollectionView Functions
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return boards.count
     }
@@ -198,5 +197,7 @@ class MenuController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
 
-   
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: cellWidth, height: cellHeight)
+    }
 }

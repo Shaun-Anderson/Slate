@@ -78,6 +78,7 @@ class boardView: UIView, UIGestureRecognizerDelegate{
             vc.lastLocation = self.center
             lastLocation = self.center
         }
+        print("board MOVED")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
@@ -137,7 +138,6 @@ class boardView: UIView, UIGestureRecognizerDelegate{
     func detectTap(_ sender: UITapGestureRecognizer? = nil)
     {
         print("BOARD: Tap")
-        //vc.NextView()
         
         if(vc.menuOpen)
         {

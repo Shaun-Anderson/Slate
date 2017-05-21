@@ -320,7 +320,6 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         newView.vc = self
         newView.layer.zPosition = 0
         drawList.append(newView)
-        drawList.append(newView)
         newView.backgroundColor = UIColor.white
         board.addSubview(newView)
     }
@@ -339,18 +338,6 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         image.allowsEditing = false
         self.present(image, animated: true, completion: nil)
-    }
-    
-    
-    //Rebuild the control parts if device is rotated
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        
-        coordinator.animate(alongsideTransition: nil)
-        { _ in
-            
-            self.board.center = self.view.center
-        }
     }
  
     

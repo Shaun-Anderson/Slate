@@ -73,6 +73,10 @@ class drawing: UIImageView {
             }
         }
         }
+        else
+        {
+           print("drawingPAN")
+        }
     }
     
     func Update()
@@ -96,12 +100,7 @@ class drawing: UIImageView {
     
     func detectTap(_ sender: UITapGestureRecognizer? = nil)
     {
-        print("TAP IMAGE")
-        if vc.selectedImageView != self
-        {
-            vc.selectedImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
-        }
-        //self.center = CGPoint((vc.board.frame.midX), (vc.board.frame.midY))
+        print("TAP Drawing")
         self.transform = CGAffineTransform(scaleX: 2, y: 2)
         scale = 2
         active = true

@@ -20,14 +20,6 @@ class Edit_noteView: UIView, UIImagePickerControllerDelegate, UINavigationContro
         super.init(frame: frame)
         self.isUserInteractionEnabled = true
         
-        
-        let selectImageButton = UIButton(frame: CGRect(10,0,50,50))
-        selectImageButton.backgroundColor = UIColor.red
-        selectImageButton.addTarget(vc, action: #selector(self.ChangeImage), for: .touchUpInside)
-        selectImageButton.setTitle("Image", for: .normal)
-        selectImageButton.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
-        self.addSubview(selectImageButton)
-        
         let selectWidth = UITextField(frame: CGRect(100,0,100,50))
         selectWidth.placeholder = "WIDTH"
         selectWidth.delegate = self
@@ -53,26 +45,6 @@ class Edit_noteView: UIView, UIImagePickerControllerDelegate, UINavigationContro
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func ChangeImage()
-    {
-        vc.OpenImagePicker(delegate: self, camera: false)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
-    {
-        if let foundImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-        {
-            newImage = foundImage
-            thisImageView.image = newImage
-            self.removeFromSuperview()
-        }
-        else
-        {
-            print("ImageNotFound")
-        }
-        vc.dismiss(animated: true, completion: nil)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
