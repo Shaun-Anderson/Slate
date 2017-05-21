@@ -37,7 +37,7 @@ class drawing: UIImageView {
         self.addGestureRecognizer(tapRecoqnizer)
         self.isUserInteractionEnabled = true
         self.layer.cornerRadius = 8.0
-        self.clipsToBounds = true
+        self.clipsToBounds = false
         lastLocation = self.center
         
     }
@@ -104,6 +104,7 @@ class drawing: UIImageView {
         self.transform = CGAffineTransform(scaleX: 2, y: 2)
         scale = 2
         active = true
+        vc.selectedImageView = self
     }
     
     func drawLines(fromPoint: CGPoint, toPoint: CGPoint)

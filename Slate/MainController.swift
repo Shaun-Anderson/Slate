@@ -15,7 +15,6 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //Lists of the different objects that are on the board
     var noteList = [note]()
     var numNotes = Int()
-    
     var imageList = [image]()
     var numImages = Int()
     var drawList = [drawing]()
@@ -37,6 +36,7 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var selectedImage = UIImage()
     var selectedImageView = UIImageView()
     
+    var selectedDrawing = drawing(frame: CGRect(0,0,0,0))
     
     //Mark: Functions
     override func viewDidLoad() {
