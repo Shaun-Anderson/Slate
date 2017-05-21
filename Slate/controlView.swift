@@ -39,7 +39,7 @@ class controlView: UIView{
         imageButton.layer.cornerRadius = 0.5 * imageButton.bounds.size.width
         imageButton.clipsToBounds = true
         imageButton.layer.borderWidth = 2
-        noteButton.tintColor = UIColor.darkGray
+        imageButton.tintColor = UIColor.darkGray
         img = UIImage(named: "Image")!
         tintedImg = img.withRenderingMode(.alwaysTemplate)
         imageButton.layer.borderColor = UIColor.darkGray.cgColor
