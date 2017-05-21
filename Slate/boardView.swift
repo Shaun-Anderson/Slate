@@ -71,8 +71,6 @@ class boardView: UIView, UIGestureRecognizerDelegate{
     
     func detectPan(_ sender: UIPanGestureRecognizer? = nil)
     {
-        if vc.selectedDrawing.active != true
-        {
         let translation = sender?.translation(in: self.superview)
         self.center = CGPoint(lastLocation.x + (translation?.x)!, lastLocation.y + (translation?.y)!)
             if(sender?.state == UIGestureRecognizerState.ended)
@@ -80,7 +78,6 @@ class boardView: UIView, UIGestureRecognizerDelegate{
                 vc.lastLocation = self.center
                 lastLocation = self.center
             }
-        }
         print("board MOVED")
     }
     

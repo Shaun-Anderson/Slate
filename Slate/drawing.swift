@@ -104,7 +104,7 @@ class drawing: UIImageView {
         self.transform = CGAffineTransform(scaleX: 2, y: 2)
         scale = 2
         active = true
-        vc.selectedImageView = self
+        vc.selectedDrawing = self
     }
     
     func drawLines(fromPoint: CGPoint, toPoint: CGPoint)

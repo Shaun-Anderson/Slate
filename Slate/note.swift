@@ -93,12 +93,12 @@ class note: UIView, UITextViewDelegate{
         let managedContext = AppDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Note")
-        fetchRequest.predicate = NSPredicate(format: "boardName == %@", vc.currentBoardName)
-        fetchRequest.predicate = NSPredicate(format: "id == %i", (self.thisID))
+        fetchRequest.predicate = NSPredicate(format: "boardName == %@ AND id == %i", vc.currentBoardName, self.thisID)
         
         do{
             let data = try managedContext.fetch(fetchRequest)
-            print("\(data.count):  HIHIHIHII")
+            print(vc.currentBoardName)
+            print(data.count)
             if(data.count == 1)
             {
                 let managedObject = data[0]
@@ -121,8 +121,7 @@ class note: UIView, UITextViewDelegate{
         guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = AppDelegate.persistentContainer.viewContext
         let noteFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Note")
-        noteFetchRequest.predicate = NSPredicate(format: "boardName == %@", vc.currentBoardName)
-        noteFetchRequest.predicate = NSPredicate(format: "id == %i", (self.thisID))
+        noteFetchRequest.predicate = NSPredicate(format: "boardName == %@ AND id == %i", vc.currentBoardName, self.thisID)
         
         do{
             let data = try managedContext.fetch(noteFetchRequest)

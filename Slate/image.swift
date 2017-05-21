@@ -98,7 +98,7 @@ class image: UIImageView {
         guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = AppDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Image")
-        fetchRequest.predicate = NSPredicate(format: "id == %i", (self.thisID))
+        fetchRequest.predicate = NSPredicate(format: "boardName == %@ AND id == %i", vc.currentBoardName, self.thisID)
         
         do{
             let data = try managedContext.fetch(fetchRequest)
@@ -123,8 +123,8 @@ class image: UIImageView {
         guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let managedContext = AppDelegate.persistentContainer.viewContext
         let imageFetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Image")
-        imageFetchRequest.predicate = NSPredicate(format: "boardName == %@", vc.currentBoardName)
-        imageFetchRequest.predicate = NSPredicate(format: "id == %i", (self.thisID))
+        imageFetchRequest.predicate = NSPredicate(format: "boardName == %@ AND id == %i", vc.currentBoardName, self.thisID)
+        
         do{
             let data = try managedContext.fetch(imageFetchRequest)
             if(data.count > 0)
@@ -166,7 +166,6 @@ class image: UIImageView {
         imageOptions.backgroundColor = UIColor.gray
         vc.view.addSubview(imageOptions)
         
-        vc.selectedImageView = UIImageView()
         vc.selectedImageView = self
     }
 }

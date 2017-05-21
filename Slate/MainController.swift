@@ -36,7 +36,7 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var selectedImage = UIImage()
     var selectedImageView = UIImageView()
     
-    var selectedDrawing = drawing(frame: CGRect(0,0,0,0))
+    var selectedDrawing = UIImageView()
     
     //Mark: Functions
     override func viewDidLoad() {
@@ -122,46 +122,11 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
 
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    func SaveImage(image: UIImage, position: String, width: Double, height: Double)
-    {
-        print("SAVING IMAGE: \(numImages + 1)")
-        guard let AppDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
-        
-        let managedContext = AppDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Image", in: managedContext)
-        let newImage = NSManagedObject(entity: entity!, insertInto: managedContext)
-        
-        let imageData = UIImagePNGRepresentation(image);
-        newImage.setValue(currentBoardName, forKey: "boardName")
-        newImage.setValue(position, forKey: "position")
-        newImage.setValue(imageData, forKey: "imageData")
-        newImage.setValue(numImages + 1, forKey: "id")
-        do{ try managedContext.save() } catch _ as NSError { print("Error saving") }
-    }
-    
-    
-    func save(name: String, backColor: String, text: String)
-    {
-        print("SAVING NOTE: \(name) + \(numNotes + 1)")
-        guard let AppDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
-        
-        let managedContext = AppDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Note", in: managedContext)
-        let note = NSManagedObject(entity: entity!, insertInto: managedContext)
-        note.setValue(currentBoardName, forKey: "boardName")
-        note.setValue(name, forKey: "position")
-        note.setValue(numNotes + 1, forKey: "id")
-        note.setValue(backColor, forKey: "color")
-        note.setValue(text, forKey: "text")
-        do{ try managedContext.save() } catch _ as NSError { print("Error saving") }
-    }
     
     func LoadNote()
     {
@@ -184,7 +149,7 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     //Create Notes From Data
                     let newView = note(frame: CGRect(location.x, location.y,100,100))
                     newView.vc = self
-                    
+                    newView.textField.text = datas.value(forKey: "text") as! String
                     newView.thisID = datas.value(forKey: "id") as! Int64
                     newView.backgroundColor = UIColor(hex: datas.value(forKey: "color") as! String)
                     
@@ -247,30 +212,40 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let managedContext = AppDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Board")
         fetchRequest.predicate = NSPredicate(format: "name == %@", currentBoardName)
-        //ADD PREDICATION FOR OTHER BOARDS
+        
         do{
             let data = try managedContext.fetch(fetchRequest)
             if(data.count > 0)
             {
-                //Get unique id from numNotes value of Board
+                //Get unique id from numNotes value of Board enitity
                 numNotes = data[0].value(forKey: "numNotes") as! Int
                 data[0].setValue((numNotes) + 1, forKey: "numNotes")
  
+                //Create note
                 let newView = note(frame: CGRect(450,300,100,100))
                 newView.vc = self
                 newView.layer.zPosition = 0
                 newView.thisID = numNotes + 1
-                
                 newView.backgroundColor = UIColor.white
                 
                 let color = newView.backgroundColor
                 let hexColor = color?.toHexString
                 
-                
-                //Add view as subview and to list of notes
+                //Add note as subview and to list of notes
                 board.addSubview(newView)
                 noteList.append(newView)
-                save(name: NSStringFromCGPoint(newView.center), backColor: hexColor!, text: "")
+                
+                //Save new note
+                let entity = NSEntityDescription.entity(forEntityName: "Note", in: managedContext)
+                let newNote = NSManagedObject(entity: entity!, insertInto: managedContext)
+                //Values
+                newNote.setValue(currentBoardName, forKey: "boardName")
+                newNote.setValue(NSStringFromCGPoint(newView.center), forKey: "position")
+                newNote.setValue(numNotes + 1, forKey: "id")
+                newNote.setValue(hexColor!, forKey: "color")
+                newNote.setValue("", forKey: "text")
+                do{ try managedContext.save() } catch _ as NSError { print("Error saving") }
+                
                 print("Created Note")
             }
         } catch _ as NSError
@@ -349,7 +324,19 @@ class MainController: UIViewController, UIImagePickerControllerDelegate, UINavig
             selectedImage = foundImage
             newImage.image = selectedImage
             board.addSubview(newImage)
-            SaveImage(image: foundImage, position: NSStringFromCGPoint(newImage.center),width: 200, height: 150)
+            
+            //Save
+            guard  let AppDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+            let managedContext = AppDelegate.persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "Image", in: managedContext)
+            let imageEntity = NSManagedObject(entity: entity!, insertInto: managedContext)
+            //Values
+            let imageData = UIImagePNGRepresentation(foundImage);
+            imageEntity.setValue(currentBoardName, forKey: "boardName")
+            imageEntity.setValue(NSStringFromCGPoint(newImage.center), forKey: "position")
+            imageEntity.setValue(imageData, forKey: "imageData")
+            imageEntity.setValue(numImages + 1, forKey: "id")
+            do{ try managedContext.save() } catch _ as NSError { print("Error saving") }
         }
         else
         {

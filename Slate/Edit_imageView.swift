@@ -49,23 +49,13 @@ class Edit_imageView: UIView, UIImagePickerControllerDelegate, UINavigationContr
         borderWidth.backgroundColor = UIColor.red
         self.addSubview(borderWidth)
  
-        
-        /*let selectBorderColor = UIButton(frame: CGRect(120,0,50,50))
-        selectBorderColor.backgroundColor = UIColor.white
-        //selectBorderColor.addTarget(vc, action: #selector(self.ChangeImage), for: .touchUpInside)
-        selectBorderColor.setTitleColor(UIColor.black, for: .normal)
-        selectBorderColor.setTitle("Color", for: .normal)
-        selectBorderColor.autoresizingMask = [.flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
-        self.addSubview(selectBorderColor)
- */
-        
-        let selectWidth = UITextField(frame: CGRect(300,0,100,50))
+        let selectWidth = UITextField(frame: CGRect(250,5,100,50))
         selectWidth.placeholder = "WIDTH"
         selectWidth.delegate = self
         selectWidth.backgroundColor = UIColor.red
         self.addSubview(selectWidth)
         
-        let selectHeight = UITextField(frame: CGRect(410,0,100,50))
+        let selectHeight = UITextField(frame: CGRect(370,5,100,50))
         selectHeight.placeholder = "HEIGHT"
         selectHeight.delegate = self
         selectHeight.backgroundColor = UIColor.red
