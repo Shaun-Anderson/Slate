@@ -19,7 +19,7 @@ public class SlateView: UIView {
     
     // MARK: - Public properties
     
-    public weak var delegate: AndoSignatureDelegate?
+    public weak var delegate: SlateDelegate?
     
     @IBInspectable public var strokeWidth : CGFloat = 2.0 {
         didSet {
@@ -136,7 +136,7 @@ public class SlateView: UIView {
     
 }
 
-extension AndoSignatureDelegate {
-    func didStart(_ view : AndoSignatureView) {}
-    func didFinish(_ view : AndoSignatureView) {}
+extension SlateDelegate {
+    func didStart(_ view : SlateView) {}
+    func didFinish(_ view : SlateView) {}
 }

@@ -36,8 +36,8 @@ class AddController: UIViewController {
     
     @IBAction func Cancel()
     {
-        let newVC = self.storyboard?.instantiateViewController(withIdentifier: "menu") as! MenuController
-        present(newVC, animated: true, completion: nil)
+        //let newVC = self.storyboard?.instantiateViewController(withIdentifier: "menu") as! MenuController
+        //present(newVC, animated: true, completion: nil)
     }
     
     func SaveBoard(name: String)

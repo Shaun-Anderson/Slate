@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2A47DF0C1ECD4090005F3F6F /* BoardMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A47DF0B1ECD4090005F3F6F /* BoardMenu.swift */; };
-		CA4896CF1EC2F67B008B341F /* BoardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4896CE1EC2F67B008B341F /* BoardCollectionViewCell.swift */; };
+		2802318F21E99C840079C1D9 /* SlateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2802318E21E99C840079C1D9 /* SlateView.swift */; };
+		2802319121E99D410079C1D9 /* LayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2802319021E99D410079C1D9 /* LayerView.swift */; };
+		2802319321E99EC60079C1D9 /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2802319221E99EC60079C1D9 /* Layer.swift */; };
+		2827F5A821DF724000E4C762 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2827F5A721DF724000E4C762 /* Note.swift */; };
+		2827F5AA21DF77E600E4C762 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2827F5A921DF77E600E4C762 /* Board.swift */; };
+		2827F5AC21DF788A00E4C762 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2827F5AB21DF788A00E4C762 /* Pin.swift */; };
 		CA4896D11EC3132B008B341F /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4896D01EC3132B008B341F /* AddController.swift */; };
 		CA9296651EB4BF7700159FA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296641EB4BF7700159FA0 /* AppDelegate.swift */; };
-		CA9296671EB4BF7700159FA0 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296661EB4BF7700159FA0 /* MenuController.swift */; };
 		CA92966A1EB4BF7700159FA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA9296681EB4BF7700159FA0 /* Main.storyboard */; };
 		CA92966F1EB4BF7700159FA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA92966E1EB4BF7700159FA0 /* Assets.xcassets */; };
 		CA9296721EB4BF7700159FA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA9296701EB4BF7700159FA0 /* LaunchScreen.storyboard */; };
@@ -19,14 +22,7 @@
 		CA9296881EB4BF7700159FA0 /* SlateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296871EB4BF7700159FA0 /* SlateUITests.swift */; };
 		CA9296991EB4C10E00159FA0 /* CGExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296981EB4C10E00159FA0 /* CGExtension.swift */; };
 		CA92969B1EB4C12800159FA0 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA92969A1EB4C12800159FA0 /* UIColorExtensions.swift */; };
-		CA92969D1EB4C14500159FA0 /* image.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA92969C1EB4C14500159FA0 /* image.swift */; };
-		CA9296A21EB4C22400159FA0 /* note.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296A11EB4C22400159FA0 /* note.swift */; };
-		CA9296A41EB4C25600159FA0 /* drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296A31EB4C25600159FA0 /* drawing.swift */; };
-		CA9296A61EB4C2D900159FA0 /* Edit_imageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296A51EB4C2D900159FA0 /* Edit_imageView.swift */; };
-		CA9296A81EB4C2F000159FA0 /* Edit_noteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296A71EB4C2F000159FA0 /* Edit_noteView.swift */; };
 		CA9296AA1EB4C32A00159FA0 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296A91EB4C32A00159FA0 /* MainController.swift */; };
-		CA9296AC1EB4C35C00159FA0 /* boardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296AB1EB4C35C00159FA0 /* boardView.swift */; };
-		CA9296AE1EB4C37500159FA0 /* controlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9296AD1EB4C37500159FA0 /* controlView.swift */; };
 		CA9296B41EB4CB2A00159FA0 /* Slate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CA9296B21EB4CB2A00159FA0 /* Slate.xcdatamodeld */; };
 		CAE0222E1ED02CCC00FF5C70 /* SelectSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CAE0222D1ED02CCC00FF5C70 /* SelectSound.mp3 */; };
 /* End PBXBuildFile section */
@@ -49,12 +45,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2A47DF0B1ECD4090005F3F6F /* BoardMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardMenu.swift; sourceTree = "<group>"; };
-		CA4896CE1EC2F67B008B341F /* BoardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardCollectionViewCell.swift; sourceTree = "<group>"; };
+		2802318E21E99C840079C1D9 /* SlateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlateView.swift; sourceTree = "<group>"; };
+		2802319021E99D410079C1D9 /* LayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerView.swift; sourceTree = "<group>"; };
+		2802319221E99EC60079C1D9 /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
+		2827F5A721DF724000E4C762 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		2827F5A921DF77E600E4C762 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		2827F5AB21DF788A00E4C762 /* Pin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		CA4896D01EC3132B008B341F /* AddController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
 		CA9296611EB4BF7700159FA0 /* Slate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA9296641EB4BF7700159FA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CA9296661EB4BF7700159FA0 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		CA9296691EB4BF7700159FA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CA92966E1EB4BF7700159FA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA9296711EB4BF7700159FA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -67,14 +66,7 @@
 		CA9296891EB4BF7700159FA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA9296981EB4C10E00159FA0 /* CGExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGExtension.swift; sourceTree = "<group>"; };
 		CA92969A1EB4C12800159FA0 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
-		CA92969C1EB4C14500159FA0 /* image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = image.swift; sourceTree = "<group>"; };
-		CA9296A11EB4C22400159FA0 /* note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = note.swift; sourceTree = "<group>"; };
-		CA9296A31EB4C25600159FA0 /* drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = drawing.swift; sourceTree = "<group>"; };
-		CA9296A51EB4C2D900159FA0 /* Edit_imageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edit_imageView.swift; sourceTree = "<group>"; };
-		CA9296A71EB4C2F000159FA0 /* Edit_noteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edit_noteView.swift; sourceTree = "<group>"; };
 		CA9296A91EB4C32A00159FA0 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
-		CA9296AB1EB4C35C00159FA0 /* boardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = boardView.swift; sourceTree = "<group>"; };
-		CA9296AD1EB4C37500159FA0 /* controlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = controlView.swift; sourceTree = "<group>"; };
 		CA9296B31EB4CB2A00159FA0 /* LifeBoard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LifeBoard.xcdatamodel; sourceTree = "<group>"; };
 		CAE0222D1ED02CCC00FF5C70 /* SelectSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SelectSound.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +96,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2827F5A421DF6B4400E4C762 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2827F5A721DF724000E4C762 /* Note.swift */,
+				2827F5A921DF77E600E4C762 /* Board.swift */,
+				2827F5AB21DF788A00E4C762 /* Pin.swift */,
+				2802319221E99EC60079C1D9 /* Layer.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		2827F5A521DF6B4C00E4C762 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2802318E21E99C840079C1D9 /* SlateView.swift */,
+				2802319021E99D410079C1D9 /* LayerView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		2827F5A621DF6B5300E4C762 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CA9296A91EB4C32A00159FA0 /* MainController.swift */,
+				CA4896D01EC3132B008B341F /* AddController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		CA9296581EB4BF7700159FA0 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +148,9 @@
 		CA9296631EB4BF7700159FA0 /* Slate */ = {
 			isa = PBXGroup;
 			children = (
+				2827F5A621DF6B5300E4C762 /* Controllers */,
+				2827F5A521DF6B4C00E4C762 /* Views */,
+				2827F5A421DF6B4400E4C762 /* Models */,
 				CAE0222D1ED02CCC00FF5C70 /* SelectSound.mp3 */,
 				CA9296731EB4BF7700159FA0 /* Info.plist */,
 				CA9296B21EB4CB2A00159FA0 /* Slate.xcdatamodeld */,
@@ -134,15 +158,6 @@
 				CA9296681EB4BF7700159FA0 /* Main.storyboard */,
 				CA9296701EB4BF7700159FA0 /* LaunchScreen.storyboard */,
 				CA9296641EB4BF7700159FA0 /* AppDelegate.swift */,
-				CA9296AD1EB4C37500159FA0 /* controlView.swift */,
-				2A47DF0B1ECD4090005F3F6F /* BoardMenu.swift */,
-				CA9296AB1EB4C35C00159FA0 /* boardView.swift */,
-				CA4896D01EC3132B008B341F /* AddController.swift */,
-				CA9296A91EB4C32A00159FA0 /* MainController.swift */,
-				CA9296661EB4BF7700159FA0 /* MenuController.swift */,
-				CA4896CE1EC2F67B008B341F /* BoardCollectionViewCell.swift */,
-				CA9296971EB4BFAF00159FA0 /* Objects */,
-				CA9296961EB4BFA500159FA0 /* EditViews */,
 				CA9296951EB4BF9B00159FA0 /* Extensions */,
 			);
 			path = Slate;
@@ -173,25 +188,6 @@
 				CA9296981EB4C10E00159FA0 /* CGExtension.swift */,
 			);
 			name = Extensions;
-			sourceTree = "<group>";
-		};
-		CA9296961EB4BFA500159FA0 /* EditViews */ = {
-			isa = PBXGroup;
-			children = (
-				CA9296A71EB4C2F000159FA0 /* Edit_noteView.swift */,
-				CA9296A51EB4C2D900159FA0 /* Edit_imageView.swift */,
-			);
-			name = EditViews;
-			sourceTree = "<group>";
-		};
-		CA9296971EB4BFAF00159FA0 /* Objects */ = {
-			isa = PBXGroup;
-			children = (
-				CA9296A31EB4C25600159FA0 /* drawing.swift */,
-				CA9296A11EB4C22400159FA0 /* note.swift */,
-				CA92969C1EB4C14500159FA0 /* image.swift */,
-			);
-			name = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,20 +253,23 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Shaun Anderson";
 				TargetAttributes = {
 					CA9296601EB4BF7700159FA0 = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					CA9296771EB4BF7700159FA0 = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						TestTargetID = CA9296601EB4BF7700159FA0;
 					};
 					CA9296821EB4BF7700159FA0 = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						TestTargetID = CA9296601EB4BF7700159FA0;
 					};
@@ -329,20 +328,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA92969D1EB4C14500159FA0 /* image.swift in Sources */,
-				CA9296A21EB4C22400159FA0 /* note.swift in Sources */,
-				CA9296A81EB4C2F000159FA0 /* Edit_noteView.swift in Sources */,
-				CA9296AE1EB4C37500159FA0 /* controlView.swift in Sources */,
-				CA9296A61EB4C2D900159FA0 /* Edit_imageView.swift in Sources */,
+				2827F5AC21DF788A00E4C762 /* Pin.swift in Sources */,
+				2802319121E99D410079C1D9 /* LayerView.swift in Sources */,
+				2827F5A821DF724000E4C762 /* Note.swift in Sources */,
 				CA9296AA1EB4C32A00159FA0 /* MainController.swift in Sources */,
 				CA4896D11EC3132B008B341F /* AddController.swift in Sources */,
-				2A47DF0C1ECD4090005F3F6F /* BoardMenu.swift in Sources */,
-				CA9296A41EB4C25600159FA0 /* drawing.swift in Sources */,
-				CA4896CF1EC2F67B008B341F /* BoardCollectionViewCell.swift in Sources */,
-				CA9296671EB4BF7700159FA0 /* MenuController.swift in Sources */,
+				2827F5AA21DF77E600E4C762 /* Board.swift in Sources */,
 				CA9296651EB4BF7700159FA0 /* AppDelegate.swift in Sources */,
 				CA9296991EB4C10E00159FA0 /* CGExtension.swift in Sources */,
-				CA9296AC1EB4C35C00159FA0 /* boardView.swift in Sources */,
+				2802318F21E99C840079C1D9 /* SlateView.swift in Sources */,
+				2802319321E99EC60079C1D9 /* Layer.swift in Sources */,
 				CA92969B1EB4C12800159FA0 /* UIColorExtensions.swift in Sources */,
 				CA9296B41EB4CB2A00159FA0 /* Slate.xcdatamodeld in Sources */,
 			);
@@ -408,15 +403,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -459,15 +462,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -502,7 +513,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = swander.Slate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -514,7 +526,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = swander.Slate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -527,7 +540,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = swander.SlateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slate.app/Slate";
 			};
 			name = Debug;
@@ -541,7 +555,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = swander.SlateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slate.app/Slate";
 			};
 			name = Release;
@@ -554,7 +569,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = swander.SlateUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = Slate;
 			};
 			name = Debug;
@@ -567,7 +583,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = swander.SlateUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_TARGET_NAME = Slate;
 			};
 			name = Release;

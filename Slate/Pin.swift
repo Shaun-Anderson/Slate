@@ -7,3 +7,14 @@
 //
 
 import Foundation
+import UIKit
+
+public class Pin {
+    var image: UIImage
+    var text: String
+    
+    init() {
+        image = UIImage()
+        text = ""
+    }
+}
